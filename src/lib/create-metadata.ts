@@ -43,12 +43,22 @@ export const createMetadata = ({
     description,
     siteName: 'BABA Construction Corp.',
     locale: 'en-US',
+    images: [
+      {
+        url: '/logo.jpg',
+        width: 1000,
+        height: 1000,
+        alt: 'BABA Construction Corp.',
+        type: 'image/jpeg',
+      },
+    ],
   },
 
   twitter: {
     card: 'summary',
     title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
     description,
+    images: ['/logo.jpg'],
   },
 
   icons: {
