@@ -5,7 +5,7 @@ import { NAV_ITEMS } from '~/constants/nav-items';
 export const Footer = () => (
   <footer className="border-t bg-neutral-900">
     <div className="container mx-auto flex flex-col gap-12 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="flex flex-col justify-between gap-16 lg:flex-row">
+      <div className="flex flex-col justify-between gap-12 lg:flex-row">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <Building2 size={32} />
