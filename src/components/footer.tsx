@@ -112,11 +112,9 @@ export const Footer = () => (
 
       <div className="border-t pt-8">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div>
-            <p className="text-center text-sm text-neutral-400 md:text-left">
-              © 2025 Baba Construction Corp. All rights reserved.{' '}
-            </p>
-            <p className="text-center text-sm text-neutral-400 md:text-left">
+          <div className="text-sm text-neutral-400 max-md:text-center">
+            <p>© 2025 Baba Construction Corp. All rights reserved. </p>
+            <p>
               Made by{' '}
               <Link
                 href="https://znagy.hu"
