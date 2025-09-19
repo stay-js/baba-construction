@@ -19,7 +19,7 @@ export const createMetadata = ({
 
   keywords: keywords.join(', '),
 
-  title: absoluteTitle ?? `${title} - BABA Construction`,
+  title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
   description,
 
   applicationName: 'BABA Construction',
@@ -39,15 +39,15 @@ export const createMetadata = ({
   openGraph: {
     type: 'website',
     url: `url${path}`,
-    title: absoluteTitle ?? `${title} - BABA Construction`,
+    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
     description,
-    siteName: 'BABA Construction',
+    siteName: 'BABA Construction Corp.',
     locale: 'en-US',
   },
 
   twitter: {
     card: 'summary',
-    title: absoluteTitle ?? `${title} - BABA Construction`,
+    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
     description,
   },
 

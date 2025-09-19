@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
           />
 
           <div className="flex flex-col">
-            <span className="block text-xl font-bold text-white">BABA Construction</span>
+            <span className="block font-bold text-white sm:text-xl">BABA Construction</span>
             <span className="block text-sm text-neutral-400 max-sm:hidden">
               Building Beyond Walls, Since 2010
             </span>
@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
 
         <div className="flex items-center space-x-4 justify-self-end">
           <Button variant="secondary" className="transition-all duration-300 hover:scale-105">
-            <Link href="#contact">Get Quote</Link>
+            <Link href="#contact">Get In Touch</Link>
           </Button>
 
           <button
