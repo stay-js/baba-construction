@@ -3,7 +3,7 @@ import { BadgeCheck, Heart, Shield, Zap } from 'lucide-react';
 import Image from 'next/image';
 
 export const About: React.FC = () => (
-  <section id="about" className="container mx-auto scroll-m-12 px-4 py-20 sm:px-6 lg:px-8">
+  <section id="about" className="container mx-auto scroll-m-8 px-4 py-20 sm:px-6 lg:px-8">
     <div className="grid items-center gap-12 lg:grid-cols-2">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-6">
