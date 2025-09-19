@@ -42,6 +42,7 @@ export const Hero: React.FC = () => {
     <section className="relative isolate grid min-h-screen place-content-center overflow-hidden py-16">
       <div className="absolute inset-0 z-0">
         <Image
+          priority
           fill
           src="/hero-bg.jpg"
           alt="BABA Construction"
