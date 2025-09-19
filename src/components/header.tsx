@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center space-x-4 justify-self-end">
-          <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground transition-all duration-300 hover:scale-105">
+          <Button variant="secondary" className="transition-all duration-300 hover:scale-105">
             Get Quote
           </Button>
 
