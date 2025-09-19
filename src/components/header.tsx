@@ -65,7 +65,7 @@ export const Header: React.FC = () => {
 
         <div className="flex items-center space-x-4 justify-self-end">
           <Button variant="secondary" className="transition-all duration-300 hover:scale-105">
-            Get Quote
+            <Link href="#contact">Get Quote</Link>
           </Button>
 
           <button

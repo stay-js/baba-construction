@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Award, Users, Calendar, ChevronDown, MoveRight } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
+import Link from 'next/link';
 
 const Item = ({
   title,
@@ -91,20 +92,24 @@ export const Hero: React.FC = () => {
             )}
           >
             <Button
+              asChild
               size="lg"
               variant="secondary"
               className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
             >
-              <span>Contact Us</span>
-              <MoveRight />
+              <Link href="#contact">
+                <span>Contact Us</span>
+                <MoveRight />
+              </Link>
             </Button>
 
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="w-fit transition-all duration-300 hover:scale-105"
             >
-              View Our Work
+              <Link href="#projects">View Our Work</Link>
             </Button>
           </div>
         </div>
