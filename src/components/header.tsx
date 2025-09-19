@@ -97,17 +97,19 @@ export const Header: React.FC = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <nav className="animate-fade-in-up flex flex-col gap-4 border-t p-4 lg:hidden">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={`${item.href}-mobile`}
-              href={item.href}
-              className="text-neutral-100 transition-colors hover:text-neutral-300"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="border-t p-4 lg:hidden">
+          <nav className="animate-fade-in-up flex flex-col gap-4">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={`${item.href}-mobile`}
+                href={item.href}
+                className="text-neutral-100 transition-colors hover:text-neutral-300"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       )}
     </header>
   );
