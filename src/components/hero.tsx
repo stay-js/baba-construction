@@ -52,7 +52,7 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/70" />
       </div>
 
-      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-8 px-4 text-center text-white">
+      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-16 px-4 text-center text-white">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
             <h1 className="text-5xl font-bold text-balance md:text-7xl">
@@ -109,7 +109,7 @@ export const Hero: React.FC = () => {
               variant="outline"
               className="w-fit transition-all duration-300 hover:scale-105"
             >
-              <Link href="#projects">View Our Work</Link>
+              <Link href="#projects">Previous Projects</Link>
             </Button>
           </div>
         </div>
