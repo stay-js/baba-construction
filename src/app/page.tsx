@@ -1,9 +1,16 @@
-import type { NextPage } from "next";
+import type { NextPage } from 'next';
+import { Header } from '~/components/header';
+import { Hero } from '~/components/hero';
 
 const Page: NextPage = () => (
-  <main className="grid min-h-screen place-items-center">
-    <h1 className="text-3xl font-bold">Baba Construction</h1>
-  </main>
+  <div className="min-h-screen">
+    <Header />
+
+    <main>
+      <Hero />
+      <div className="min-h-[200vh]"></div>
+    </main>
+  </div>
 );
 
 export default Page;
