@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import { Header } from '~/components/header';
 import { Hero } from '~/components/hero';
 import { Footer } from '~/components/footer';
+import { About } from '~/components/about';
 import { createMetadata } from '~/lib/create-metadata';
 
 export const metadata = createMetadata({
@@ -17,10 +18,11 @@ const Page: NextPage = () => (
 
     <main>
       <Hero />
+      <About />
 
       <div
         //plceholder for page content
-        className="min-h-[200vh]"
+        className="min-h-screen"
       />
 
       <Footer />

@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
 
   const scrollToNext = () => {
     window.scrollTo({
-      top: window.innerHeight,
+      top: window.innerHeight - 48,
       behavior: 'smooth',
     });
   };

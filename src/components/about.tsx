@@ -1,0 +1,83 @@
+import { Card, CardContent } from '~/components/ui/card';
+import { BadgeCheck, Heart, Shield, Zap } from 'lucide-react';
+import Image from 'next/image';
+
+export const About: React.FC = () => (
+  <section id="about" className="container mx-auto scroll-m-12 px-4 py-20 sm:px-6 lg:px-8">
+    <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
+          <h2 className="text-4xl font-bold text-balance">Family-Owned Excellence Since 2010</h2>
+
+          <p className="text-lg leading-relaxed text-neutral-400">
+            BABA Construction Corp. is a family-owned construction company founded in 2010, proudly
+            serving New York City and the surrounding region. We specialize in high-end renovations,
+            custom homebuilding, and comprehensive interior construction for both residential and
+            commercial clients.
+          </p>
+          <p className="text-lg leading-relaxed text-neutral-400">
+            What makes us unique is our all-in-one approach: under one roof, we bring together
+            licensed and experienced professionals in electrical work, plumbing, carpentry, custom
+            millwork, kitchen and bathroom renovations, and full gut remodels. This integrated model
+            allows us to manage every stage of a project with precision, efficiency, and
+            personalized care - from concept to completion.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          {['Licensed & Insured', 'Expert Craftsmen', 'Quality Materials', 'On-Time Delivery'].map(
+            (item) => (
+              <div className="flex items-center gap-2" key={item}>
+                <BadgeCheck size={20} className="text-red-800" />
+                <span className="text-sm">{item}</span>
+              </div>
+            ),
+          )}
+        </div>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {[
+          {
+            title: 'Family Values',
+            description:
+              "Every project is personal to us, treated with the care we'd give our own home.",
+            icon: <Heart size={36} className="text-red-800" />,
+          },
+          {
+            title: 'Quality First',
+            description: 'We use only the finest materials and proven construction techniques.',
+            icon: <Shield size={36} className="text-red-800" />,
+          },
+          {
+            title: 'Innovation',
+            description:
+              'Combining traditional craftsmanship with modern technology and techniques.',
+            icon: <Zap size={36} className="text-red-800" />,
+          },
+        ].map((card) => (
+          <Card className="mx-auto max-w-md" key={card.title}>
+            <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
+              {card.icon}
+
+              <div className="flex flex-col gap-2">
+                <h3 className="font-semibold">{card.title}</h3>
+                <p className="text-muted-foreground text-sm">{card.description}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+
+        <div className="bg-card mx-auto h-full w-full max-w-md rounded-lg max-md:hidden">
+          <Image
+            src="/about.jpg"
+            width={480}
+            height={480}
+            alt="BABA Construction Interior"
+            className="h-full w-full rounded-lg object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+);
