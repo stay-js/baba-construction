@@ -28,13 +28,13 @@ export const Header: React.FC = () => {
       )}
     >
       <div className="grid grid-cols-2 items-center p-4 lg:grid-cols-3">
-        <div className="flex items-center gap-2 justify-self-start">
+        <div className="flex items-center gap-3 justify-self-start">
           <Image
             className="rounded-lg"
             src="/logo.jpg"
-            alt="Baba Construction"
-            width={50}
-            height={50}
+            alt="BABA Construction Corp. Logo"
+            width={48}
+            height={48}
           />
 
           <div className="flex flex-col">
