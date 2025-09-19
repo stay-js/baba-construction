@@ -29,7 +29,6 @@ const Item = ({
 
 export const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => setIsVisible(true), []);
 
   const scrollToNext = () => {
@@ -46,69 +45,70 @@ export const Hero: React.FC = () => {
           fill
           src="/hero-bg.jpg"
           alt="BABA Construction"
-          className="h-full w-full scale-110 animate-pulse object-cover"
+          className="animation-duration-5000 h-full w-full animate-pulse object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="from-primary/10 to-secondary/10 absolute inset-0 animate-pulse bg-gradient-to-r" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/70" />
       </div>
 
       <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-8 px-4 text-center text-white">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-5xl font-bold text-balance md:text-7xl">
-            <span
-              className={cn(
-                'block transition-all duration-1000',
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
-              )}
-            >
-              Building Beyond Walls,
-            </span>
-            <span
-              className={cn(
-                'block transition-all duration-1400',
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
-              )}
-            >
-              Creating Legacies
-            </span>
-          </h1>
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6">
+            <h1 className="text-5xl font-bold text-balance md:text-7xl">
+              <span
+                className={cn(
+                  'block transition-all duration-1000',
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
+                )}
+              >
+                Building Beyond Walls,
+              </span>
+              <span
+                className={cn(
+                  'block transition-all duration-1400',
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
+                )}
+              >
+                Creating Legacies
+              </span>
+            </h1>
 
-          <h2
+            <h2
+              className={cn(
+                'text-xl text-balance text-neutral-200 opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
+                isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
+              )}
+            >
+              BABA Construction Corp. - Redefining Luxury Living in New York. Integrated expertise.
+              Seamless execution. Timeless results.
+            </h2>
+          </div>
+
+          <div
             className={cn(
-              'text-xl text-balance text-neutral-200 opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
-              isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
+              'flex flex-col items-center justify-center gap-4 transition-all delay-500 duration-1000 sm:flex-row',
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
             )}
           >
-            BABA Construction Corp. - Redefining Luxury Living in New York. Integrated expertise.
-            Seamless execution. Timeless results.
-          </h2>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
+            >
+              <span>Contact Us</span>
+              <MoveRight />
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-fit transition-all duration-300 hover:scale-105"
+            >
+              View Our Work
+            </Button>
+          </div>
         </div>
 
-        <div
-          className={cn(
-            'flex flex-col items-center justify-center gap-4 transition-all delay-500 duration-1000 sm:flex-row',
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
-          )}
-        >
-          <Button
-            size="lg"
-            variant="secondary"
-            className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
-          >
-            <span>Contact Us</span>
-            <MoveRight />
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="w-fit transition-all duration-300 hover:scale-105"
-          >
-            View Our Work
-          </Button>
-        </div>
-
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 py-6 md:grid-cols-3 md:gap-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 py-24 max-md:hidden md:grid-cols-3 md:gap-8 md:py-6">
           <Item title="15+" description="Years Experience" icon={<Calendar size={28} />} />
 
           <Item title="Countless" description="Projects Completed" icon={<Award size={28} />} />
