@@ -5,13 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
-
-const NAV_ITEMS = [
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Projects', href: '#portfolio' },
-  { label: 'Contact', href: '#contact' },
-];
+import { NAV_ITEMS } from '~/constants/nav-items';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
