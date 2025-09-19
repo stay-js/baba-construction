@@ -80,8 +80,9 @@ export const Hero: React.FC = () => {
                 isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
               )}
             >
-              BABA Construction Corp. - Redefining Luxury Living in New York. Integrated expertise.
-              Seamless execution. Timeless results.
+              BABA Construction Corp. - Redefining Luxury Living in{' '}
+              <span className="whitespace-nowrap">New York</span>. Integrated expertise. Seamless
+              execution. Timeless results.
             </h2>
           </div>
 

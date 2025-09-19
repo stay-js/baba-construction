@@ -13,8 +13,9 @@ export const Footer = () => (
           </div>
 
           <p className="max-w-[50ch] text-sm leading-relaxed text-neutral-400">
-            BABA Construction Corp. - Redefining Luxury Living in New York. Integrated expertise.
-            Seamless execution. Timeless results.
+            BABA Construction Corp. - Redefining Luxury Living in{' '}
+            <span className="whitespace-nowrap">New York</span>. Integrated expertise. Seamless
+            execution. Timeless results.
           </p>
 
           <div className="flex gap-4">
@@ -29,7 +30,7 @@ export const Footer = () => (
             </Link>
 
             <Link
-              href="https://www.instagram.com/"
+              href="https://www.instagram.com/baba_construction"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-400 transition-colors duration-200 hover:text-white"
@@ -76,9 +77,9 @@ export const Footer = () => (
                 <MapPin size={20} />
 
                 <p className="text-sm text-neutral-400">
-                  123 Construction Ave
+                  9 Alta Vista Circle
                   <br />
-                  New York, NY 10001
+                  Irvington, NY, 10533
                 </p>
               </div>
 
@@ -86,11 +87,11 @@ export const Footer = () => (
                 <Phone size={20} />
 
                 <Link
-                  href="tel:+9991112222"
+                  href="tel:+19142403509"
                   target="_blank"
                   className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white"
                 >
-                  (999) 111-2222
+                  +1 (914) 240-3509
                 </Link>
               </div>
 
