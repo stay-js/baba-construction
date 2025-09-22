@@ -4,6 +4,7 @@ import { Hero } from '~/components/hero';
 import { Footer } from '~/components/footer';
 import { About } from '~/components/about';
 import { createMetadata } from '~/lib/create-metadata';
+import { Services } from '~/components/services';
 
 export const metadata = createMetadata({
   path: '',
@@ -19,6 +20,7 @@ const Page: NextPage = () => (
     <main>
       <Hero />
       <About />
+      <Services />
 
       <div
         //plceholder for page content
