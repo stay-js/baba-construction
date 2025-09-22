@@ -41,7 +41,7 @@ export const Contact: React.FC = () => (
           <Card className="bg-card" key={card.title}>
             <CardContent className="flex items-start gap-4 p-8">
               <div className="rounded-lg bg-neutral-800 p-3">
-                <card.icon size={28} />
+                <card.icon className="h-4 w-4 sm:h-6 sm:w-6" />
               </div>
               <div className="flex flex-col gap-2">
                 <h3 className="font-semibold sm:text-lg">{card.title}</h3>
