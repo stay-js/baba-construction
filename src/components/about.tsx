@@ -36,7 +36,7 @@ export const About: React.FC = () => (
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid auto-rows-[1fr] gap-4 md:grid-cols-2">
         {[
           {
             title: 'Family Values',
