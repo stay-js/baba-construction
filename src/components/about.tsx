@@ -42,23 +42,23 @@ export const About: React.FC = () => (
             title: 'Family Values',
             description:
               "Every project is personal to us, treated with the care we'd give our own home.",
-            icon: <Heart size={36} className="text-red-800" />,
+            icon: Heart,
           },
           {
             title: 'Quality First',
             description: 'We use only the finest materials and proven construction techniques.',
-            icon: <Shield size={36} className="text-red-800" />,
+            icon: Shield,
           },
           {
             title: 'Innovation',
             description:
               'Combining traditional craftsmanship with modern technology and techniques.',
-            icon: <Zap size={36} className="text-red-800" />,
+            icon: Zap,
           },
         ].map((card) => (
           <Card className="mx-auto max-w-md" key={card.title}>
             <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
-              {card.icon}
+              <card.icon size={36} className="text-red-800" />
 
               <div className="flex flex-col gap-2">
                 <h3 className="font-semibold">{card.title}</h3>

@@ -7,27 +7,6 @@ import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
 import Link from 'next/link';
 
-const Item = ({
-  title,
-  description,
-  icon,
-}: {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-}) => (
-  <div className="group animate-fade-in-up flex flex-col items-center gap-2 transition-colors duration-300 hover:text-neutral-400">
-    <span className="animate-float text-neutral-400 transition-colors duration-300 group-hover:text-neutral-600">
-      {icon}
-    </span>
-
-    <div className="flex flex-col gap-0.5">
-      <span className="block text-3xl font-bold">{title}</span>
-      <span className="block text-sm opacity-90">{description}</span>
-    </div>
-  </div>
-);
-
 export const Hero: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => setIsVisible(true), []);
@@ -116,11 +95,25 @@ export const Hero: React.FC = () => {
         </div>
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 py-24 max-md:hidden md:grid-cols-3 md:gap-8 md:py-6">
-          <Item title="15+" description="Years Experience" icon={<Calendar size={28} />} />
+          {[
+            { title: '15+', description: 'Years Experience', icon: Calendar },
+            { title: 'Countless', description: 'Projects Completed', icon: Award },
+            { title: '100%', description: 'Client Satisfaction', icon: Users },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="group animate-fade-in-up flex flex-col items-center gap-2 transition-colors duration-300 hover:text-neutral-400"
+            >
+              <span className="animate-float text-neutral-400 transition-colors duration-300 group-hover:text-neutral-600">
+                <item.icon size={28} />
+              </span>
 
-          <Item title="Countless" description="Projects Completed" icon={<Award size={28} />} />
-
-          <Item title="100%" description="Client Satisfaction" icon={<Users size={28} />} />
+              <div className="flex flex-col gap-0.5">
+                <span className="block text-3xl font-bold">{item.title}</span>
+                <span className="block text-sm opacity-90">{item.description}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
