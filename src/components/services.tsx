@@ -57,7 +57,7 @@ const services = [
 
 export const Services: React.FC = () => (
   <section id="services" className="bg-card scroll-m-8 py-20">
-    <div className="container mx-auto flex flex-col gap-16 px-4">
+    <div className="container mx-auto flex flex-col gap-16 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Our Comprehensive Services</h2>
         <p className="max-w-2xl text-xl text-balance text-neutral-300">
