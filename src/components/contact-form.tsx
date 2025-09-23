@@ -1,17 +1,20 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Label } from '~/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
 import { Button } from '~/components/ui/button';
+import { env } from '~/env.js';
+import sendEmail from '~/app/contact/actions';
 
-export const formSchema = z.object({
+const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required!'),
   lastName: z.string().min(1, 'Last name is required!'),
   email: z.email('Invalid email address!'),
@@ -20,7 +23,6 @@ export const formSchema = z.object({
 });
 
 type FormSchema = z.infer<typeof formSchema>;
-// type Data = FormSchema & { token: string };
 
 const defaultValues: FormSchema = {
   firstName: '',
@@ -31,6 +33,8 @@ const defaultValues: FormSchema = {
 };
 
 export const ContactForm: React.FC = () => {
+  const captchaRef = useRef<ReCAPTCHA>(null);
+
   const {
     register,
     handleSubmit,
@@ -39,7 +43,14 @@ export const ContactForm: React.FC = () => {
   } = useForm<FormSchema>({ resolver: zodResolver(formSchema), defaultValues });
 
   const onSubmit: SubmitHandler<FormSchema> = async (data) => {
-    console.log(data);
+    const token = await captchaRef.current?.executeAsync().catch(() => null);
+    captchaRef.current?.reset();
+
+    if (!token) return;
+
+    const result = await sendEmail({ ...data, token });
+
+    console.log(result?.success);
   };
 
   useEffect(() => {
@@ -135,7 +146,7 @@ export const ContactForm: React.FC = () => {
                 )}
               </div>
 
-              <Textarea id="message" className="min-h-40" {...register('message')} />
+              <Textarea id="message" className="min-h-40 resize-none" {...register('message')} />
             </div>
 
             <div className="text-sm">
@@ -164,6 +175,12 @@ export const ContactForm: React.FC = () => {
           <Button type="submit" className="w-fit px-8">
             Submit
           </Button>
+
+          <ReCAPTCHA
+            ref={captchaRef}
+            sitekey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            size="invisible"
+          />
         </form>
       </CardContent>
     </Card>
