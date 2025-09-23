@@ -1,6 +1,15 @@
 import { Hammer, Wrench, Building, Zap, Cuboid, Drill } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Button } from '~/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '~/components/ui/dialog';
+// import { ScrollArea } from '~/components/ui/scroll-area';
 
 const services = [
   {
@@ -91,9 +100,19 @@ export const Services: React.FC = () => (
                   </ul>
                 </div>
 
-                <Button variant="outline" className="w-full">
-                  Learn More
-                </Button>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">Learn More</Button>
+                  </DialogTrigger>
+                  <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)]">
+                    <DialogHeader>
+                      <DialogTitle>{service.title}</DialogTitle>
+                      <DialogDescription>{service.description}</DialogDescription>
+                    </DialogHeader>
+
+                    {/* <ScrollArea></ScrollArea> */}
+                  </DialogContent>
+                </Dialog>
               </div>
             </CardContent>
           </Card>
