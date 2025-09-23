@@ -42,13 +42,11 @@ export default async function sendEmail(formData: Data) {
       subject: `New message from ${data.firstName} ${data.lastName} (${data.email})`,
       html: `
 				<div>
-        Name:
-        <br />
-				First Name: <b>${data.firstName}</b>  Last Name: <b>${data.lastName}</b>
+        First Name: <b>${data.firstName}</b>&emsp;Last Name: <b>${data.lastName}</b>
 				<br />
 				Email: <b>${data.email}</b>
         <br />
-				Email: <b>${data.phone}</b>
+				Phone Number: <b>${data.phone}</b>
 				</div>
 				<br />
 		
