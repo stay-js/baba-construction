@@ -1,6 +1,9 @@
 'use server';
 
+import { headers } from 'next/headers';
 import nodemailer from 'nodemailer';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 import { z } from 'zod';
 import { validateCaptchaResponse } from '~/lib/validate-captcha-response';
 import { env } from '~/env.js';
@@ -23,6 +26,19 @@ export default async function sendEmail(formData: Data) {
 
   const isHuman = await validateCaptchaResponse(data.token);
   if (!isHuman) return { success: false };
+
+  const ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(3, '1 m'),
+    analytics: true,
+    prefix: '@upstash/ratelimit',
+  });
+
+  const ip = (await headers()).get('x-forwarded-for');
+  if (!ip) return { success: false };
+
+  const result = await ratelimit.limit(ip);
+  if (!result.success) return { success: false };
 
   try {
     const transporter = nodemailer.createTransport({
