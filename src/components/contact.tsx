@@ -17,7 +17,7 @@ export const Contact: React.FC = () => (
     <div className="grid gap-8 lg:grid-cols-2">
       <ContactForm />
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col justify-between gap-8">
         {[
           {
             title: 'Call Us',

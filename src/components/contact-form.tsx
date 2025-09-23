@@ -149,38 +149,40 @@ export const ContactForm: React.FC = () => {
               <Textarea id="message" className="min-h-40 resize-none" {...register('message')} />
             </div>
 
-            <div className="text-sm">
-              This site is protected by reCAPTCHA and the Google{' '}
-              <Link
-                className="text-[#1a73e8] hover:underline"
-                href="https://policies.google.com/privacy"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Privacy Policy
-              </Link>{' '}
-              and{' '}
-              <Link
-                className="text-[#1a73e8] hover:underline"
-                href="https://policies.google.com/terms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Terms of Service
-              </Link>{' '}
-              apply.
+            <div className="flex flex-col gap-4 text-sm">
+              <div>
+                This site is protected by reCAPTCHA and the Google{' '}
+                <Link
+                  className="text-[#1a73e8] hover:underline"
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy Policy
+                </Link>{' '}
+                and{' '}
+                <Link
+                  className="text-[#1a73e8] hover:underline"
+                  href="https://policies.google.com/terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Terms of Service
+                </Link>{' '}
+                apply.
+              </div>
+
+              <ReCAPTCHA
+                ref={captchaRef}
+                sitekey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                size="invisible"
+              />
             </div>
           </div>
 
           <Button type="submit" className="w-fit px-8">
             Submit
           </Button>
-
-          <ReCAPTCHA
-            ref={captchaRef}
-            sitekey={env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            size="invisible"
-          />
         </form>
       </CardContent>
     </Card>
