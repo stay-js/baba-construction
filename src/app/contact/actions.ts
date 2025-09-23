@@ -21,11 +21,10 @@ type Data = z.infer<typeof schema>;
 
 export default async function sendEmail(formData: Data) {
   const { data, success } = schema.safeParse(formData);
-
-  if (!success) return { success: false };
+  if (!success) throw new Error('Invalid form data');
 
   const isHuman = await validateCaptchaResponse(data.token);
-  if (!isHuman) return { success: false };
+  if (!isHuman) throw new Error('Captcha validation failed');
 
   const ratelimit = new Ratelimit({
     redis: Redis.fromEnv(),
@@ -35,10 +34,10 @@ export default async function sendEmail(formData: Data) {
   });
 
   const ip = (await headers()).get('x-forwarded-for');
-  if (!ip) return { success: false };
+  if (!ip) throw new Error('No client IP');
 
   const result = await ratelimit.limit(ip);
-  if (!result.success) return { success: false };
+  if (!result.success) throw new Error('Too many requests');
 
   try {
     const transporter = nodemailer.createTransport({
@@ -73,8 +72,10 @@ export default async function sendEmail(formData: Data) {
 				</div>
 				`,
     });
+
+    return { success: true };
   } catch (error) {
     console.error(error);
-    return { success: false };
+    throw error;
   }
 }

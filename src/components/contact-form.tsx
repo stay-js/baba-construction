@@ -49,15 +49,10 @@ export const ContactForm: React.FC = () => {
 
     if (!token) return;
 
-    const errorMessage = 'Something went wrong. Please try again later.';
-
     toast.promise(sendEmail({ ...data, token }), {
       loading: 'Sending message...',
-      success: (data) =>
-        data?.success
-          ? 'Message sent successfully! We will get back to you as soon as possible.'
-          : errorMessage,
-      error: () => errorMessage,
+      success: () => 'Message sent successfully! We will get back to you as soon as possible.',
+      error: () => 'Something went wrong. Please try again later.',
     });
   };
 
