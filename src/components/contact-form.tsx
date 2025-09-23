@@ -6,13 +6,14 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { toast } from 'sonner';
+import sendEmail from '~/app/contact/actions';
 import { Label } from '~/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Input } from '~/components/ui/input';
 import { Textarea } from '~/components/ui/textarea';
 import { Button } from '~/components/ui/button';
 import { env } from '~/env.js';
-import sendEmail from '~/app/contact/actions';
 
 const formSchema = z.object({
   firstName: z.string().min(1, 'First name is required!'),
@@ -48,9 +49,11 @@ export const ContactForm: React.FC = () => {
 
     if (!token) return;
 
-    const result = await sendEmail({ ...data, token });
-
-    console.log(result?.success);
+    toast.promise(sendEmail({ ...data, token }), {
+      loading: 'Sending message...',
+      success: () => 'Message sent successfully! We will get back to you as soon as possible.',
+      error: () => 'Something went wrong. Please try again later.',
+    });
   };
 
   useEffect(() => {
