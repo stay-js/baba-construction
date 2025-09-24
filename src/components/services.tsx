@@ -1,4 +1,3 @@
-import { Hammer, Wrench, Building, Zap, Cuboid, Drill } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { Button } from '~/components/ui/button';
 import {
@@ -9,60 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '~/components/ui/dialog';
-// import { ScrollArea } from '~/components/ui/scroll-area';
-
-const services = [
-  {
-    icon: Building,
-    title: 'General Contracting',
-    description:
-      'Complete project management from planning to completion for residential and commercial projects.',
-    features: ['Project Planning', 'Permit Handling', 'Quality Control', 'Timeline Management'],
-  },
-  {
-    icon: Wrench,
-    title: 'Maintenance Services',
-    description:
-      'Ongoing maintenance and repair services to keep your property in perfect condition.',
-    features: [
-      'Preventive Maintenance',
-      'Emergency Repairs',
-      'System Inspections',
-      'Regular Upkeep',
-    ],
-  },
-  {
-    icon: Zap,
-    title: 'Mechanical Systems',
-    description: 'Expert installation and maintenance of HVAC, electrical, and plumbing systems.',
-    features: ['HVAC Installation', 'Electrical Work', 'Plumbing Systems', 'System Upgrades'],
-  },
-  {
-    icon: Hammer,
-    title: 'Dry Construction',
-    description:
-      'Framing, drywall, and interior construction services for new builds and renovations.',
-    features: ['Framing', 'Drywall Installation', 'Insulation', 'Interior Finishing'],
-  },
-  {
-    icon: Cuboid,
-    title: 'Insulation',
-    description:
-      'We specialize in facade and acoustic insulation works, enhancing energy efficiency and comfort in your buildings.',
-    features: [
-      'Thermal Insulation',
-      'Acoustic Insulation',
-      'Facade Insulation',
-      'Moisture & Vapor Barriers',
-    ],
-  },
-  {
-    icon: Drill,
-    title: 'Custom Millwork',
-    description: 'Bespoke woodwork and millwork to add character and functionality to your space.',
-    features: ['Built-in Storage', 'Crown Molding', 'Custom Shelving', 'Architectural Details'],
-  },
-];
+import { ScrollArea } from '~/components/ui/scroll-area';
+import { services } from '~/constants/services';
 
 export const Services: React.FC = () => (
   <section id="services" className="bg-card scroll-m-8 py-20">
@@ -100,19 +47,23 @@ export const Services: React.FC = () => (
                   </ul>
                 </div>
 
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">Learn More</Button>
-                  </DialogTrigger>
-                  <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)]">
-                    <DialogHeader>
-                      <DialogTitle>{service.title}</DialogTitle>
-                      <DialogDescription>{service.description}</DialogDescription>
-                    </DialogHeader>
+                {service.popup && (
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline">Learn More</Button>
+                    </DialogTrigger>
+                    <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)] lg:max-w-5xl">
+                      <DialogHeader>
+                        <DialogTitle>{service.title}</DialogTitle>
+                        <DialogDescription>{service.description}</DialogDescription>
+                      </DialogHeader>
 
-                    {/* <ScrollArea></ScrollArea> */}
-                  </DialogContent>
-                </Dialog>
+                      <ScrollArea className="h-[75vh]">
+                        <service.popup />
+                      </ScrollArea>
+                    </DialogContent>
+                  </Dialog>
+                )}
               </div>
             </CardContent>
           </Card>
