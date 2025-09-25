@@ -8,7 +8,7 @@ import { Services } from '~/components/services';
 import { Contact } from '~/components/contact';
 
 export const metadata = createMetadata({
-  path: '',
+  path: '/',
   title: 'Home',
   description:
     'BABA Construction Corp. - Redefining Luxury Living in New York. Integrated expertise. Seamless execution. Timeless results.',

@@ -12,7 +12,7 @@ export const createMetadata = ({
   absoluteTitle?: string;
   description: string;
 }): Metadata => ({
-  metadataBase: new URL('https://baba-construction.vercel.app'),
+  metadataBase: new URL('https://www.babaconstructioncorp.com'),
 
   authors: [{ name: 'Zétény Nagy', url: 'https://znagy.hu' }],
   creator: 'Zétény Nagy',
