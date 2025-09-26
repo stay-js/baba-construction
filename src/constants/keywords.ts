@@ -1,6 +1,5 @@
 export const keywords = [
   'BABA Construction Corp',
-  'family-owned',
   'construction company',
   'New York City',
   'high-end renovations',

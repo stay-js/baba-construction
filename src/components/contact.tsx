@@ -34,7 +34,7 @@ export const Contact: React.FC = () => (
           {
             title: 'Service Area',
             description: 'We serve the greater NYC area',
-            info: 'Manhattan, Brooklyn, Queens',
+            info: 'Manhattan, Brooklyn, Queens, Bronx and Westchester County',
             icon: MapPin,
           },
         ].map((card) => (
