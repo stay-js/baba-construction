@@ -28,7 +28,11 @@ export const Header: React.FC = () => {
       )}
     >
       <div className="grid grid-cols-2 items-center p-4 lg:grid-cols-3">
-        <div className="flex items-center gap-3 justify-self-start">
+        <div
+          className="flex cursor-pointer items-center gap-3 justify-self-start select-none"
+          role="button"
+          onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <Image
             className="rounded-lg"
             src="/logo.jpg"
