@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Building2, Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Building2, Phone, Mail, MapPin, Instagram } from 'lucide-react';
 import { NAV_ITEMS } from '~/constants/nav-items';
 
 export const Footer = () => (
@@ -20,16 +20,6 @@ export const Footer = () => (
 
           <div className="flex gap-4">
             <Link
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-400 transition-colors duration-200 hover:text-white"
-              aria-label="Facebook"
-            >
-              <Facebook size={24} />
-            </Link>
-
-            <Link
               href="https://www.instagram.com/baba_construction"
               target="_blank"
               rel="noopener noreferrer"
@@ -37,16 +27,27 @@ export const Footer = () => (
               aria-label="Instagram"
             >
               <Instagram size={24} />
+              <span className="sr-only">Instagram</span>
             </Link>
 
             <Link
-              href="https://www.linkedin.com/"
+              href="tel:+19142403509"
               target="_blank"
-              rel="noopener noreferrer"
               className="text-neutral-400 transition-colors duration-200 hover:text-white"
-              aria-label="LinkedIn"
+              aria-label="Phone"
             >
-              <Linkedin size={24} />
+              <Phone size={24} />
+              <span className="sr-only">Phone</span>
+            </Link>
+
+            <Link
+              href="mailto:babaconstructioncorp@gmail.com"
+              target="_blank"
+              className="text-neutral-400 transition-colors duration-200 hover:text-white"
+              aria-label="Mail"
+            >
+              <Mail size={24} />
+              <span className="sr-only">Mail</span>
             </Link>
           </div>
         </div>
