@@ -10,7 +10,7 @@ const geist = Geist({
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html lang="en" className={`${geist.variable} dark`}>
-    <body className="bg-neutral-950 text-white">
+    <body className="overflow-x-hidden bg-neutral-950 text-white antialiased">
       {children}
 
       <Toaster position="top-left" />
