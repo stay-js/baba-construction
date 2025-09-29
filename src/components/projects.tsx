@@ -23,7 +23,7 @@ export const Projects: React.FC = () => (
     </div>
 
     <Carousel
-      className="relative mx-auto w-full max-w-7xl p-4 md:p-16"
+      className="relative mx-auto w-full max-w-7xl px-4 md:px-16"
       opts={{
         align: 'start',
         loop: true,
