@@ -17,9 +17,9 @@ export const Services: React.FC = () => (
     <div className="container mx-auto flex flex-col gap-16 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Our Comprehensive Services</h2>
-        <p className="max-w-2xl text-xl text-balance text-neutral-300">
+        <h3 className="mx-auto max-w-2xl text-xl text-balance text-neutral-400">
           From concept to completion
-        </p>
+        </h3>
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

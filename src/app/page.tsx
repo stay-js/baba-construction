@@ -6,7 +6,7 @@ import { About } from '~/components/about';
 import { createMetadata } from '~/lib/create-metadata';
 import { Services } from '~/components/services';
 import { Contact } from '~/components/contact';
-// import { Projects } from '~/components/projects';
+import { Projects } from '~/components/projects';
 import { Testimonials } from '~/components/testimonials';
 
 export const metadata = createMetadata({
@@ -24,7 +24,7 @@ const Page: NextPage = () => (
       <Hero />
       <About />
       <Services />
-      {/* <Projects /> */}
+      <Projects />
       <Testimonials />
 
       <Contact />

@@ -8,7 +8,7 @@ export const Testimonials: React.FC = () => (
     <div className="container mx-auto flex flex-col gap-16 px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">What Our Clients Say</h2>
-        <h3 className="mx-auto max-w-2xl text-xl text-pretty text-neutral-400">
+        <h3 className="mx-auto max-w-2xl text-xl text-balance text-neutral-400">
           Don&apos;t just take our word for it. Here&apos;s what our clients have to say about
           working with us.
         </h3>
