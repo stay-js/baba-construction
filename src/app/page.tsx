@@ -6,6 +6,8 @@ import { About } from '~/components/about';
 import { createMetadata } from '~/lib/create-metadata';
 import { Services } from '~/components/services';
 import { Contact } from '~/components/contact';
+// import { Projects } from '~/components/projects';
+import { Testimonials } from '~/components/testimonials';
 
 export const metadata = createMetadata({
   path: '/',
@@ -22,6 +24,8 @@ const Page: NextPage = () => (
       <Hero />
       <About />
       <Services />
+      {/* <Projects /> */}
+      <Testimonials />
 
       <Contact />
 
