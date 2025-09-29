@@ -9,6 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselDots,
 } from '~/components/ui/carousel';
 
 export const Projects: React.FC = () => (
@@ -22,7 +23,7 @@ export const Projects: React.FC = () => (
     </div>
 
     <Carousel
-      className="mx-auto w-full max-w-7xl p-4"
+      className="relative mx-auto w-full max-w-7xl p-4 md:p-16"
       opts={{
         align: 'start',
         loop: true,
@@ -54,8 +55,10 @@ export const Projects: React.FC = () => (
         ))}
       </CarouselContent>
 
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="max-md:hidden" />
+      <CarouselNext className="max-md:hidden" />
+
+      <CarouselDots />
     </Carousel>
   </div>
 );

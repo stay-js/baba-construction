@@ -176,8 +176,8 @@ function CarouselPrevious({
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
-          ? 'top-1/2 -left-12 -translate-y-1/2'
-          : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
+          ? 'top-1/2 left-4 -translate-y-1/2'
+          : 'top-4 left-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
       disabled={!canScrollPrev}
@@ -206,8 +206,8 @@ function CarouselNext({
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
-          ? 'top-1/2 -right-12 -translate-y-1/2'
-          : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
+          ? 'top-1/2 right-4 -translate-y-1/2'
+          : 'bottom-4 left-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
       disabled={!canScrollNext}
@@ -220,6 +220,59 @@ function CarouselNext({
   );
 }
 
+function useCarouselProgress() {
+  const { api } = useCarousel();
+
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    setScrollSnaps(api.scrollSnapList());
+    setSelectedIndex(api.selectedScrollSnap());
+
+    const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
+    api.on('select', onSelect);
+    api.on('reInit', onSelect);
+
+    return () => {
+      api.off('select', onSelect);
+      api.off('reInit', onSelect);
+    };
+  }, [api]);
+
+  const scrollTo = React.useCallback(
+    (index: number) => {
+      api?.scrollTo(index);
+    },
+    [api],
+  );
+
+  return { selectedIndex, scrollSnaps, scrollTo };
+}
+
+function CarouselDots() {
+  const { selectedIndex, scrollSnaps, scrollTo } = useCarouselProgress();
+
+  return (
+    <div className="mt-8 flex justify-center gap-2">
+      {scrollSnaps.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => scrollTo(index)}
+          className={cn(
+            'h-2 rounded-full transition-all',
+            index === selectedIndex
+              ? 'bg-primary w-8'
+              : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2',
+          )}
+        />
+      ))}
+    </div>
+  );
+}
+
 export {
   type CarouselApi,
   Carousel,
@@ -227,4 +280,6 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  useCarouselProgress,
+  CarouselDots,
 };
