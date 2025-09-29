@@ -38,8 +38,8 @@ export const Projects: React.FC = () => (
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
 
-              <div className="flex flex-col justify-center gap-12 p-8 py-4 lg:p-12">
-                <div className="flex flex-col gap-4">
+              <div className="flex flex-col justify-center gap-8 p-8 py-6 lg:gap-12 lg:p-12">
+                <div className="flex flex-col gap-2">
                   <h2 className="text-2xl font-bold text-balance lg:text-3xl">{project.title}</h2>
                   <div className="w-fit rounded-full bg-neutral-800 px-3 py-1 text-sm text-neutral-100">
                     {project.type}
