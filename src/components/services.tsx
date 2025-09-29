@@ -26,7 +26,7 @@ export const Services: React.FC = () => (
         {services.map((service, index) => (
           <Card
             key={index}
-            className="group bg-card transition-all duration-300 hover:bg-neutral-800/50 hover:shadow-lg"
+            className="group bg-black transition-all duration-300 hover:bg-neutral-800/50 hover:shadow-lg"
           >
             <CardHeader className="flex items-center gap-3">
               <div className="rounded-lg bg-red-800/10 p-2 text-red-800 transition-colors duration-300 group-hover:bg-white">
@@ -43,7 +43,7 @@ export const Services: React.FC = () => (
                 <Dialog>
                   <DialogTrigger asChild>
                     <Button variant="outline" className="flex w-fit gap-2">
-                      <span> Learn More</span>
+                      <span>Learn More</span>
                       <MoveRight />
                     </Button>
                   </DialogTrigger>
