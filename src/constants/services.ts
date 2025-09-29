@@ -1,4 +1,14 @@
-import { Hammer, Wrench, Building, Zap, Cuboid, Drill } from 'lucide-react';
+import {
+  Hammer,
+  Wrench,
+  Building,
+  Zap,
+  Cuboid,
+  Paintbrush,
+  Wallpaper,
+  Home,
+  Sparkles,
+} from 'lucide-react';
 
 import { GeneralContractingPopup } from '~/components/popups/general-contracting';
 import { MaintenanceServicesPopup } from '~/components/popups/maintenance-services';
@@ -12,7 +22,6 @@ export const services = [
     title: 'General Contracting',
     description:
       'Complete project management from planning to completion for residential and commercial projects.',
-    features: ['Project Planning', 'Permit Handling', 'Quality Control', 'Timeline Management'],
     popup: GeneralContractingPopup,
   },
   {
@@ -20,19 +29,12 @@ export const services = [
     title: 'Maintenance Services',
     description:
       'Ongoing maintenance and repair services to keep your property in perfect condition.',
-    features: [
-      'Preventive Maintenance',
-      'Emergency Repairs',
-      'System Inspections',
-      'Regular Upkeep',
-    ],
     popup: MaintenanceServicesPopup,
   },
   {
     icon: Zap,
     title: 'Mechanical Systems',
     description: 'Expert installation and maintenance of HVAC, electrical, and plumbing systems.',
-    features: ['HVAC Installation', 'Electrical Work', 'Plumbing Systems', 'System Upgrades'],
     popup: MechanicalSystemsPopup,
   },
   {
@@ -40,7 +42,6 @@ export const services = [
     title: 'Dry Construction',
     description:
       'Framing, drywall, and interior construction services for new builds and renovations.',
-    features: ['Framing', 'Drywall Installation', 'Insulation', 'Interior Finishing'],
     popup: DryConstructionPopup,
   },
   {
@@ -48,18 +49,30 @@ export const services = [
     title: 'Insulation',
     description:
       'We specialize in facade and acoustic insulation works, enhancing energy efficiency and comfort in your buildings.',
-    features: [
-      'Thermal Insulation',
-      'Acoustic Insulation',
-      'Facade Insulation',
-      'Moisture & Vapor Barriers',
-    ],
     popup: InsulationPopup,
   },
   {
-    icon: Drill,
-    title: 'Custom Millwork',
-    description: 'Bespoke woodwork and millwork to add character and functionality to your space.',
-    features: ['Built-in Storage', 'Crown Molding', 'Custom Shelving', 'Architectural Details'],
+    title: 'Interior Painting',
+    description:
+      'Transform your spaces with professional interior painting services using premium materials and techniques.',
+    icon: Paintbrush,
+  },
+  {
+    title: 'Wallpaper',
+    description:
+      'Expert wallpaper installation and removal services to create stunning accent walls and complete room makeovers.',
+    icon: Wallpaper,
+  },
+  {
+    title: 'Roofing',
+    description:
+      'Complete roofing solutions including installation, repair, and maintenance for residential and commercial properties.',
+    icon: Home,
+  },
+  {
+    title: 'Venetian Plaster',
+    description:
+      'Luxury decorative plaster finishes that add elegance and sophistication to any interior space.',
+    icon: Sparkles,
   },
 ];

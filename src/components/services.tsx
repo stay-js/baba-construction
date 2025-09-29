@@ -1,4 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { MoveRight } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '~/components/ui/card';
 import { Button } from '~/components/ui/button';
 import {
   Dialog,
@@ -25,46 +26,39 @@ export const Services: React.FC = () => (
         {services.map((service, index) => (
           <Card
             key={index}
-            className="group bg-neutral-950 transition-shadow duration-300 hover:shadow-xl"
+            className="group bg-card transition-all duration-300 hover:bg-neutral-800/50 hover:shadow-lg"
           >
-            <CardHeader className="flex flex-col gap-4">
-              <div className="grid w-fit items-center rounded-lg bg-neutral-800/50 p-3 transition-colors duration-300 group-hover:bg-neutral-800/20">
-                <service.icon size={28} className="text-red-800" />
+            <CardHeader className="flex items-center gap-3">
+              <div className="rounded-lg bg-red-800/10 p-2 text-red-800 transition-colors duration-300 group-hover:bg-white">
+                <service.icon size={20} />
               </div>
-              <CardTitle className="text-xl">{service.title}</CardTitle>
+              <CardTitle className="text-lg font-semibold">{service.title}</CardTitle>
             </CardHeader>
+            <CardContent className="flex h-full flex-col justify-between gap-4">
+              <CardDescription className="leading-relaxed text-neutral-400">
+                {service.description}
+              </CardDescription>
 
-            <CardContent className="h-full">
-              <div className="flex h-full flex-col justify-between gap-6">
-                <div className="flex flex-col gap-4">
-                  <p className="leading-relaxed text-neutral-400">{service.description}</p>
-                  <ul className="flex list-inside list-disc flex-col gap-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="text-sm marker:text-red-800">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+              {service.popup && (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" className="flex w-fit gap-2">
+                      <span> Learn More</span>
+                      <MoveRight />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)] lg:max-w-5xl">
+                    <DialogHeader>
+                      <DialogTitle>{service.title}</DialogTitle>
+                      <DialogDescription>{service.description}</DialogDescription>
+                    </DialogHeader>
 
-                {service.popup && (
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline">Learn More</Button>
-                    </DialogTrigger>
-                    <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)] lg:max-w-5xl">
-                      <DialogHeader>
-                        <DialogTitle>{service.title}</DialogTitle>
-                        <DialogDescription>{service.description}</DialogDescription>
-                      </DialogHeader>
-
-                      <ScrollArea className="h-[75vh]">
-                        <service.popup />
-                      </ScrollArea>
-                    </DialogContent>
-                  </Dialog>
-                )}
-              </div>
+                    <ScrollArea className="h-[75vh]">
+                      <service.popup />
+                    </ScrollArea>
+                  </DialogContent>
+                </Dialog>
+              )}
             </CardContent>
           </Card>
         ))}
