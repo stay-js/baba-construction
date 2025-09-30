@@ -46,7 +46,9 @@ export const Contact: React.FC = () => (
               <div className="flex flex-col gap-2">
                 <h3 className="font-semibold sm:text-lg">{card.title}</h3>
                 <p className="text-neutral-400">{card.description}</p>
-                <p className="font-semibold wrap-anywhere sm:text-lg md:text-xl">{card.info}</p>
+                <p className="font-semibold text-balance wrap-anywhere sm:text-lg md:text-xl">
+                  {card.info}
+                </p>
               </div>
             </CardContent>
           </Card>
