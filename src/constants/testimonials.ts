@@ -13,7 +13,7 @@ export const testimonials = [
   },
   {
     testimonial:
-      'I’ve worked with Baba Construction on several projects. Eugeno and his team are excellent. They do what they say they’re going to do when they say they’re going to do it. A project manager’s dream!',
+      'I’ve worked with BABA Construction on several projects. Eugeno and his team are excellent. They do what they say they’re going to do when they say they’re going to do it. A project manager’s dream!',
     author: 'Karina Taveras',
     role: 'Related Home Expert',
   },
@@ -25,13 +25,13 @@ export const testimonials = [
   },
   {
     testimonial:
-      'Their ability to handle tasks with precision, clear communication, and adherence to building regulations makes them a trusted partner in maintaining and enhancing our property. [...] I highly recommend Baba Construction Corp for any project they are bidding on and am confident in their ability to deliver exceptional results. Please feel free to contact me if you require further details regarding my experience working with them.',
+      'Their ability to handle tasks with precision, clear communication, and adherence to building regulations makes them a trusted partner in maintaining and enhancing our property. [...] I highly recommend BABA Construction Corp for any project they are bidding on and am confident in their ability to deliver exceptional results. Please feel free to contact me if you require further details regarding my experience working with them.',
     author: 'Ivan Marchuk',
     role: 'Resident Manager, The Cortland NYC',
   },
   {
     testimonial:
-      'It is our pleasure to highly recommend Baba Construction for any construction and renovation projects. As interior designers at GG Group Design, we have had the opportunity to work with many contractors, and Baba Construction has consistently stood out as one of the best. Throughout our collaborations, Eugeno and his team have been a true asset to our projects.',
+      'It is our pleasure to highly recommend BABA Construction for any construction and renovation projects. As interior designers at GG Group Design, we have had the opportunity to work with many contractors, and BABA Construction has consistently stood out as one of the best. Throughout our collaborations, Eugeno and his team have been a true asset to our projects.',
     author: 'Rina Granik & Anna Kripitser',
     initials: 'R&A',
     role: 'GG Group Design',
