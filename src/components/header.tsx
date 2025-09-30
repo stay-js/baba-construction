@@ -1,11 +1,35 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
 import { NAV_ITEMS } from '~/constants/nav-items';
+
+const LinkOrDiv: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const pathname = usePathname();
+
+  const className = 'flex cursor-pointer items-center gap-3 justify-self-start select-none';
+
+  if (pathname === '/')
+    return (
+      <div
+        className={className}
+        role="button"
+        onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        {children}
+      </div>
+    );
+
+  return (
+    <Link href="/" className={className}>
+      {children}
+    </Link>
+  );
+};
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,11 +52,7 @@ export const Header: React.FC = () => {
       )}
     >
       <div className="grid grid-cols-2 items-center p-4 lg:grid-cols-3">
-        <Link
-          href={'/'}
-          className="flex cursor-pointer items-center gap-3 justify-self-start select-none"
-          onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
-        >
+        <LinkOrDiv>
           <Image
             className="rounded-lg"
             src="/logo.jpg"
@@ -47,7 +67,7 @@ export const Header: React.FC = () => {
               Building Beyond Walls, Since 2010
             </span>
           </div>
-        </Link>
+        </LinkOrDiv>
 
         <nav className="hidden items-center space-x-8 justify-self-center lg:flex">
           {NAV_ITEMS.map((item) => (

@@ -11,7 +11,7 @@ const geist = Geist({
 });
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
-  <html lang="en" className={`${geist.variable} dark`}>
+  <html lang="en" className={`${geist.variable} dark scroll-smooth`}>
     <body className="min-h-screen overflow-x-hidden bg-neutral-950 text-white antialiased">
       <Header />
 
