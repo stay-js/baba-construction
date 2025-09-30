@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
-import { Header } from '~/components/header';
 import { Hero } from '~/components/hero';
-import { Footer } from '~/components/footer';
 import { About } from '~/components/about';
 import { createMetadata } from '~/lib/create-metadata';
 import { Services } from '~/components/services';
@@ -17,21 +15,15 @@ export const metadata = createMetadata({
 });
 
 const Page: NextPage = () => (
-  <div className="min-h-screen">
-    <Header />
+  <>
+    <Hero />
+    <About />
+    <Services />
+    <Projects />
+    <Testimonials />
 
-    <main>
-      <Hero />
-      <About />
-      <Services />
-      <Projects />
-      <Testimonials />
-
-      <Contact />
-
-      <Footer />
-    </main>
-  </div>
+    <Contact />
+  </>
 );
 
 export default Page;

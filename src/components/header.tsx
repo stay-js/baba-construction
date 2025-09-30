@@ -28,9 +28,9 @@ export const Header: React.FC = () => {
       )}
     >
       <div className="grid grid-cols-2 items-center p-4 lg:grid-cols-3">
-        <div
+        <Link
+          href={'/'}
           className="flex cursor-pointer items-center gap-3 justify-self-start select-none"
-          role="button"
           onClick={() => scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <Image
@@ -47,7 +47,7 @@ export const Header: React.FC = () => {
               Building Beyond Walls, Since 2010
             </span>
           </div>
-        </div>
+        </Link>
 
         <nav className="hidden items-center space-x-8 justify-self-center lg:flex">
           {NAV_ITEMS.map((item) => (
