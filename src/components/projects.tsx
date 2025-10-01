@@ -47,7 +47,12 @@ export const Projects: React.FC = () => (
 
               {project.images.map((image) => (
                 <div className="relative h-48 overflow-hidden rounded-lg lg:h-56" key={image}>
-                  <Image src={image} alt={project.title} fill className="object-cover" />
+                  <Image
+                    src={image}
+                    alt={project.title}
+                    fill
+                    className="object-cover object-center"
+                  />
                 </div>
               ))}
             </Card>
