@@ -11,8 +11,8 @@ export const projects = [
   },
   {
     title: 'Zaha Hadid',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    mainImage: '/projects/zaha-1.jpg',
+    images: ['/projects/zaha-2.jpg', '/projects/zaha-3.jpg'],
   },
   {
     title: 'Lantern House',

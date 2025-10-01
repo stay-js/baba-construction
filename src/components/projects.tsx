@@ -34,7 +34,7 @@ export const Projects: React.FC = () => (
     >
       <CarouselContent>
         {projects.map((project, index) => (
-          <CarouselItem key={index}>
+          <CarouselItem key={index} className="lg:basis-1/2">
             <Card className="bg-card grid grid-cols-2 gap-2 p-2">
               <div className="relative col-span-2 h-80 overflow-hidden rounded-lg lg:h-96">
                 <Image src={project.mainImage} alt={project.title} fill className="object-cover" />
