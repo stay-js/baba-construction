@@ -69,7 +69,7 @@ export const About: React.FC = () => (
 
         <div className="bg-card mx-auto h-full w-full max-w-md rounded-lg max-md:hidden">
           <Image
-            src="/about.jpg"
+            src="/projects/35-hudson-1.jpg"
             width={480}
             height={480}
             alt="BABA Construction Interior"

@@ -1,13 +1,8 @@
 export const projects = [
   {
-    title: '15 Hudson Yards',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
-  },
-  {
-    title: '35 Hudson Yards',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    title: 'Lantern House',
+    mainImage: '/projects/lantern-1.jpg',
+    images: ['/projects/lantern-2.jpg', '/projects/lantern-3.jpg'],
   },
   {
     title: 'Zaha Hadid',
@@ -15,9 +10,14 @@ export const projects = [
     images: ['/projects/zaha-2.jpg', '/projects/zaha-3.jpg'],
   },
   {
-    title: 'Lantern House',
-    mainImage: '/projects/lantern-1.jpg',
-    images: ['/projects/lantern-2.jpg', '/projects/lantern-3.jpg'],
+    title: '15 Hudson Yards',
+    mainImage: '/projects/15-hudson-1.jpg',
+    images: ['/placeholder.png', '/placeholder.png'],
+  },
+  {
+    title: '35 Hudson Yards',
+    mainImage: '/projects/35-hudson-1.jpg',
+    images: ['/placeholder.png', '/placeholder.png'],
   },
   {
     title: 'Tribecca Green',
