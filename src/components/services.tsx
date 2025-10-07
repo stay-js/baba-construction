@@ -1,15 +1,4 @@
-import { MoveRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '~/components/ui/card';
-import { Button } from '~/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '~/components/ui/dialog';
-import { ScrollArea } from '~/components/ui/scroll-area';
 import { services } from '~/constants/services';
 
 export const Services: React.FC = () => (
@@ -38,27 +27,6 @@ export const Services: React.FC = () => (
               <CardDescription className="leading-relaxed text-neutral-400">
                 {service.description}
               </CardDescription>
-
-              {service.popup && (
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" className="flex w-fit gap-2">
-                      <span>Learn More</span>
-                      <MoveRight />
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="h-full max-h-[calc(100%-2rem)] w-full max-w-[calc(100%-2rem)] sm:max-h-[calc(100%-4rem)] sm:max-w-[calc(100%-4rem)] lg:max-w-5xl">
-                    <DialogHeader>
-                      <DialogTitle>{service.title}</DialogTitle>
-                      <DialogDescription>{service.description}</DialogDescription>
-                    </DialogHeader>
-
-                    <ScrollArea className="h-[75vh]">
-                      <service.popup />
-                    </ScrollArea>
-                  </DialogContent>
-                </Dialog>
-              )}
             </CardContent>
           </Card>
         ))}
