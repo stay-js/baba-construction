@@ -14,33 +14,32 @@ export const Testimonials: React.FC = () => (
         </h3>
       </div>
 
-      <div className="gap-6 space-y-6 md:columns-2 lg:columns-3">
+      <div className="gap-6 md:columns-2 lg:columns-3">
         {testimonials.map((item) => (
-          <Card
-            key={item.author}
-            className="flex break-inside-avoid-column flex-col gap-8 bg-neutral-950 p-8"
-          >
-            <blockquote className="leading-relaxed text-pretty text-neutral-100">
-              &quot;{item.testimonial}&quot;
-            </blockquote>
+          <div key={item.author} className="break-inside-avoid-column pb-6">
+            <Card className="flex flex-col gap-8 bg-neutral-950 p-8">
+              <blockquote className="leading-relaxed text-pretty text-neutral-100">
+                &quot;{item.testimonial}&quot;
+              </blockquote>
 
-            <div className="flex items-center gap-3">
-              <div className="grid size-12 place-items-center rounded-full bg-neutral-800">
-                <span className="text-sm font-bold">
-                  {item.initials ??
-                    item.author
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')}
-                </span>
-              </div>
+              <div className="flex items-center gap-3">
+                <div className="grid size-12 place-items-center rounded-full bg-neutral-800">
+                  <span className="text-sm font-bold">
+                    {item.initials ??
+                      item.author
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')}
+                  </span>
+                </div>
 
-              <div>
-                <div className="font-semibold text-neutral-100">{item.author}</div>
-                <div className="text-sm text-neutral-400">{item.role}</div>
+                <div>
+                  <div className="font-semibold text-neutral-100">{item.author}</div>
+                  <div className="text-sm text-neutral-400">{item.role}</div>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         ))}
       </div>
     </div>
