@@ -12,27 +12,27 @@ export const projects = [
   {
     title: '15 Hudson Yards',
     mainImage: '/projects/15-hudson-1.jpg',
-    images: ['/placeholder.png', '/placeholder.png'],
+    images: ['/projects/15-hudson-2.jpg', '/projects/15-hudson-3.jpg'],
   },
   {
     title: '35 Hudson Yards',
     mainImage: '/projects/35-hudson-1.jpg',
-    images: ['/placeholder.png', '/placeholder.png'],
+    images: ['/projects/35-hudson-2.jpg', '/projects/35-hudson-3.jpg'],
   },
   {
     title: 'Tribecca Green',
-    mainImage: '/placeholder.png',
+    mainImage: '/projects/tribecca-1.jpg',
     images: ['/placeholder.png', '/placeholder.png'],
   },
   {
     title: '450 Washington Street',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    mainImage: '/projects/450-wash-1.jpg',
+    images: ['/projects/450-wash-2.jpg', '/projects/450-wash-3.jpg'],
   },
   {
     title: 'One Hanson Place',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    mainImage: '/projects/hanson-1.jpg',
+    images: ['/projects/hanson-2.jpg', '/projects/hanson-3.webp'],
   },
   {
     title: 'Trump Tower',
