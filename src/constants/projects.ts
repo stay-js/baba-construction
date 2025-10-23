@@ -10,6 +10,11 @@ export const projects = [
     images: ['/projects/zaha-2.jpg', '/projects/zaha-3.jpg'],
   },
   {
+    title: 'Cortland',
+    mainImage: '/projects/cortland-1.jpg',
+    images: ['/projects/cortland-2.jpg', '/projects/cortland-3.jpg'],
+  },
+  {
     title: '15 Hudson Yards',
     mainImage: '/projects/15-hudson-1.jpg',
     images: ['/projects/15-hudson-2.jpg', '/projects/15-hudson-3.jpg'],
@@ -33,11 +38,6 @@ export const projects = [
     title: 'Trump Tower',
     mainImage: '/projects/trump-1.jpg',
     images: ['/projects/trump-2.jpg', '/projects/trump-3.jpg'],
-  },
-  {
-    title: 'Cortland',
-    mainImage: '/projects/cortland-1.jpg',
-    images: ['/projects/cortland-2.jpg', '/projects/cortland-3.jpg'],
   },
   {
     title: 'One Hanson Place',
