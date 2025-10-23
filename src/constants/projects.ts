@@ -30,18 +30,18 @@ export const projects = [
     images: ['/projects/450-wash-2.jpg', '/projects/450-wash-3.jpg'],
   },
   {
-    title: 'One Hanson Place',
-    mainImage: '/projects/hanson-1.jpg',
-    images: ['/projects/hanson-2.jpg', '/projects/hanson-3.webp'],
-  },
-  {
     title: 'Trump Tower',
     mainImage: '/projects/trump-1.jpg',
     images: ['/projects/trump-2.jpg', '/projects/trump-3.jpg'],
   },
   {
     title: 'Cortland',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    mainImage: '/projects/cortland-1.jpg',
+    images: ['/projects/cortland-2.jpg', '/projects/cortland-3.jpg'],
+  },
+  {
+    title: 'One Hanson Place',
+    mainImage: '/projects/hanson-1.jpg',
+    images: ['/projects/hanson-2.jpg', '/projects/hanson-3.webp'],
   },
 ] as const;
