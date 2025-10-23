@@ -22,7 +22,7 @@ export const projects = [
   {
     title: 'Tribecca Green',
     mainImage: '/projects/tribecca-1.jpg',
-    images: ['/placeholder.png', '/placeholder.png'],
+    images: ['/projects/tribecca-2.jpg', '/projects/tribecca-3.jpg'],
   },
   {
     title: '450 Washington Street',
@@ -36,8 +36,8 @@ export const projects = [
   },
   {
     title: 'Trump Tower',
-    mainImage: '/placeholder.png',
-    images: ['/placeholder.png', '/placeholder.png'],
+    mainImage: '/projects/trump-1.jpg',
+    images: ['/projects/trump-2.jpg', '/projects/trump-3.jpg'],
   },
   {
     title: 'Cortland',
