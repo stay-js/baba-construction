@@ -19,7 +19,7 @@ export const testimonials = [
   },
   {
     testimonial:
-      'Baba Construction & Development is a long-standing and trusted partner of Related Companies, and we are proud of this relationship.',
+      'BABA Construction & Development is a long-standing and trusted partner of Related Companies, and we are proud of this relationship.',
     author: 'Related Companies',
     role: 'Related Companies',
   },
