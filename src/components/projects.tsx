@@ -38,7 +38,7 @@ export const Projects: React.FC = () => (
             <Card className="bg-card grid grid-cols-2 gap-2 p-2">
               <div className="relative col-span-2 h-80 overflow-hidden rounded-lg lg:h-96">
                 <Image src={project.mainImage} alt={project.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
 
                 <h2 className="absolute bottom-0 left-0 p-6 text-2xl font-bold lg:text-3xl">
                   {project.title}
