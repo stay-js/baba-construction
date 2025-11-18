@@ -15,7 +15,13 @@ export const testimonials = [
     testimonial:
       'I’ve worked with BABA Construction on several projects. Eugeno and his team are excellent. They do what they say they’re going to do when they say they’re going to do it. A project manager’s dream!',
     author: 'Karina Taveras',
-    role: 'Related Home Expert',
+    role: 'Home Expert, Related Companies',
+  },
+  {
+    testimonial:
+      'Baba Construction & Development is a long-standing and trusted partner of Related Companies, and we are proud of this relationship.',
+    author: 'Related Companies',
+    role: 'Related Companies',
   },
   {
     testimonial:
