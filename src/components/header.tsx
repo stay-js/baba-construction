@@ -52,7 +52,7 @@ export function Header() {
           : '-translate-y-full bg-transparent',
       )}
     >
-      <div className="grid grid-cols-2 items-center p-4 lg:grid-cols-3">
+      <div className="grid grid-cols-[1fr_auto] items-center p-4 lg:grid-cols-3">
         <LinkOrDiv>
           <Image
             className="rounded-lg"
@@ -64,8 +64,8 @@ export function Header() {
 
           <div className="flex flex-col">
             <span className="block font-bold text-white sm:text-xl">BABA Construction</span>
-            <span className="block text-sm text-neutral-400 max-sm:hidden">
-              Building Beyond Walls, Since 2010
+            <span className="block text-sm text-neutral-400">
+              Building Beyond Walls<span className='max-sm:hidden'>, Since 2010</span>
             </span>
           </div>
         </LinkOrDiv>
@@ -83,7 +83,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center space-x-4 justify-self-end">
-          <Button variant="secondary" className="transition-all duration-300 hover:scale-105">
+          <Button variant="secondary" className="transition-all duration-300 hover:scale-105 max-lg:hidden">
             <Link href="#contact">Get In Touch</Link>
           </Button>
 

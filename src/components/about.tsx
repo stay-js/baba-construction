@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { BadgeCheck, Heart, Shield, Zap } from 'lucide-react';
 
 import { Card, CardContent } from '~/components/ui/card';
@@ -40,7 +39,7 @@ export function About() {
           </div>
         </div>
 
-        <div className="grid auto-rows-[1fr] gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-4">
           {[
             {
               title: 'Family Values',
@@ -60,7 +59,7 @@ export function About() {
               icon: Zap,
             },
           ].map((card) => (
-            <Card className="mx-auto max-w-md" key={card.title}>
+            <Card className="mx-auto max-w-md col-span-2 md:last-of-type:col-[2/4]" key={card.title}>
               <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
                 <card.icon size={36} className="text-red-800" />
 
@@ -71,7 +70,7 @@ export function About() {
               </CardContent>
             </Card>
           ))}
-
+{/* 
           <div className="bg-card mx-auto h-full w-full max-w-md rounded-lg max-md:hidden">
             <Image
               src="/projects/35-hudson-1.jpg"
@@ -80,7 +79,7 @@ export function About() {
               alt="BABA Construction Interior"
               className="h-full w-full rounded-lg object-cover"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
