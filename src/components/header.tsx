@@ -63,8 +63,8 @@ export function Header() {
           />
 
           <div className="flex flex-col">
-            <span className="block font-bold text-white sm:text-xl">BABA Construction</span>
-            <span className="block text-sm text-neutral-400">
+            <span className="block font-bold text-foreground sm:text-xl">BABA Construction</span>
+            <span className="block text-sm text-muted-foreground">
               Building Beyond Walls<span className='max-sm:hidden'>, Since 2010</span>
             </span>
           </div>
@@ -75,7 +75,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-neutral-100 transition-all duration-300 hover:text-neutral-300"
+              className="text-foreground/90 transition-all duration-300 hover:text-muted-foreground"
             >
               {item.label}
             </Link>
@@ -122,7 +122,7 @@ export function Header() {
               <Link
                 key={`${item.href}-mobile`}
                 href={item.href}
-                className="text-neutral-100 transition-colors hover:text-neutral-300"
+                className="text-foreground/90 transition-colors hover:text-muted-foreground"
               >
                 {item.label}
               </Link>

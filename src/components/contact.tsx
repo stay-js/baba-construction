@@ -11,7 +11,7 @@ export function Contact() {
     >
       <div className="flex flex-col gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Let&apos;s Discuss Your Project</h2>
-        <h3 className="mx-auto max-w-2xl text-xl text-balance text-neutral-400">
+        <h3 className="mx-auto max-w-2xl text-xl text-balance text-muted-foreground">
           Ready to transform your space? Get in touch with us.
         </h3>
       </div>
@@ -42,14 +42,14 @@ export function Contact() {
           ].map((card) => (
             <Card className="bg-card" key={card.title}>
               <CardContent className="flex items-start gap-4 p-8">
-                <div className="rounded-lg bg-neutral-800 p-3">
+                <div className="rounded-lg bg-foreground/10 p-3">
                   <card.icon className="size-4 sm:size-6" />
                 </div>
 
                 <div className="flex flex-col gap-4">
                   <div>
                     <h3 className="font-semibold sm:text-lg">{card.title}</h3>
-                    <p className="text-neutral-400">{card.description}</p>
+                    <p className="text-muted-foreground">{card.description}</p>
                   </div>
 
                   <p className="font-semibold text-balance wrap-anywhere sm:text-lg md:text-xl">

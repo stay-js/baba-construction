@@ -10,12 +10,12 @@ export function About() {
           <div className="flex flex-col gap-6">
             <h2 className="text-4xl font-bold text-balance">Creating Legacies Since 2010</h2>
 
-            <p className="text-lg leading-relaxed text-neutral-400">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               BABA Construction Corp. is proudly serving New York City and the surrounding region
               since 2010. We specialize in high-end renovations, custom homebuilding, and
               comprehensive interior construction for both residential and commercial clients.
             </p>
-            <p className="text-lg leading-relaxed text-neutral-400">
+            <p className="text-lg leading-relaxed text-muted-foreground">
               What makes us unique is our all-in-one approach: under one roof, we bring together
               licensed and experienced professionals in electrical work, plumbing, carpentry, custom
               millwork, kitchen and bathroom renovations, and full gut remodels. This integrated

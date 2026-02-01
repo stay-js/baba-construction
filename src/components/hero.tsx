@@ -30,10 +30,11 @@ export function Hero() {
           alt="BABA Construction"
           className="animation-duration-5000 h-full w-full animate-pulse object-cover"
         />
+        
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black/70" />
       </div>
 
-      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-16 px-4 text-center text-white">
+      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-16 px-4 text-center text-foreground">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
             <h1 className="text-5xl font-bold text-balance md:text-7xl">
@@ -57,7 +58,7 @@ export function Hero() {
 
             <h2
               className={cn(
-                'text-xl text-balance text-neutral-200 opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
+                'text-xl text-balance text-foreground/80 opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
                 isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
               )}
             >
@@ -104,9 +105,9 @@ export function Hero() {
           ].map((item) => (
             <div
               key={item.title}
-              className="group animate-fade-in-up flex flex-col items-center gap-2 transition-colors duration-300 hover:text-neutral-400"
+              className="group animate-fade-in-up flex flex-col items-center gap-2 transition-colors duration-300 hover:text-muted-foreground"
             >
-              <span className="animate-float text-neutral-400 transition-colors duration-300 group-hover:text-neutral-600">
+              <span className="animate-float text-muted-foreground transition-colors duration-300 group-hover:text-muted-foreground/80">
                 <item.icon size={28} />
               </span>
 
@@ -121,7 +122,7 @@ export function Hero() {
 
       <button
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer text-white transition-colors hover:text-neutral-300"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer text-foreground transition-colors hover:text-muted-foreground"
       >
         <ChevronDown size={28} />
       </button>

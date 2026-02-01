@@ -5,7 +5,7 @@ import { NAV_ITEMS } from '~/constants/nav-items';
 
 export function Footer() {
   return (
-    <footer className="border-t bg-neutral-900">
+    <footer className="border-t bg-card/80">
       <div className="container mx-auto flex flex-col gap-12 px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-12 lg:flex-row">
           <div className="flex flex-col gap-4">
@@ -14,7 +14,7 @@ export function Footer() {
               <h3 className="text-xl font-bold">BABA Construction Corp.</h3>
             </div>
 
-            <p className="max-w-[50ch] text-sm leading-relaxed text-neutral-400">
+            <p className="max-w-[50ch] text-sm leading-relaxed text-muted-foreground">
               BABA Construction Corp. - Redefining Luxury Living in{' '}
               <span className="whitespace-nowrap">New York</span>. Integrated expertise. Seamless
               execution. Timeless results.
@@ -25,7 +25,7 @@ export function Footer() {
                 href="https://www.instagram.com/baba_construction"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors duration-200 hover:text-white"
+                className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                 aria-label="Instagram"
               >
                 <Instagram size={24} />
@@ -35,7 +35,7 @@ export function Footer() {
               <Link
                 href="tel:+19142403509"
                 target="_blank"
-                className="text-neutral-400 transition-colors duration-200 hover:text-white"
+                className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                 aria-label="Phone"
               >
                 <Phone size={24} />
@@ -45,7 +45,7 @@ export function Footer() {
               <Link
                 href="mailto:babaconstructioncorp@gmail.com"
                 target="_blank"
-                className="text-neutral-400 transition-colors duration-200 hover:text-white"
+                className="text-muted-foreground transition-colors duration-200 hover:text-foreground"
                 aria-label="Mail"
               >
                 <Mail size={24} />
@@ -56,14 +56,14 @@ export function Footer() {
 
           <div className="flex flex-col gap-8 md:flex-row lg:gap-16 xl:gap-24">
             <div className="flex flex-col gap-4">
-              <h4 className="text-lg font-semibold text-white">Quick Links</h4>
+              <h4 className="text-lg font-semibold text-foreground">Quick Links</h4>
 
               <ul className="flex flex-col gap-2">
                 {NAV_ITEMS.map((item) => (
                   <li key={`footer-${item.href}`}>
                     <Link
                       href={item.href}
-                      className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white"
+                      className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
                     >
                       {item.label}
                     </Link>
@@ -73,13 +73,13 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col gap-4">
-              <h4 className="text-lg font-semibold text-white">Contact Info</h4>
+              <h4 className="text-lg font-semibold text-foreground">Contact Info</h4>
 
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
                   <MapPin size={20} />
 
-                  <p className="text-sm text-neutral-400">
+                  <p className="text-sm text-muted-foreground">
                     9 Alta Vista Circle
                     <br />
                     Irvington, NY, 10533
@@ -92,7 +92,7 @@ export function Footer() {
                   <Link
                     href="tel:+19142403509"
                     target="_blank"
-                    className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white"
+                    className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
                   >
                     +1 (914) 240-3509
                   </Link>
@@ -104,7 +104,7 @@ export function Footer() {
                   <Link
                     href="mailto:babaconstructioncorp@gmail.com"
                     target="_blank"
-                    className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white"
+                    className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
                   >
                     babaconstructioncorp@gmail.com
                   </Link>
@@ -116,7 +116,7 @@ export function Footer() {
 
         <div className="border-t pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="text-sm text-neutral-400 max-md:text-center">
+            <div className="text-sm text-muted-foreground max-md:text-center">
               <p>© 2025 Baba Construction Corp. All rights reserved. </p>
               <p>
                 Made by{' '}
@@ -124,7 +124,7 @@ export function Footer() {
                   href="https://znagy.hu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors duration-200 hover:text-white"
+                  className="transition-colors duration-200 hover:text-foreground"
                 >
                   znagy
                 </Link>
@@ -134,7 +134,7 @@ export function Footer() {
 
             <Link
               href="/privacy-policy"
-              className="text-sm text-neutral-400 transition-colors duration-200 hover:text-white"
+              className="text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground"
             >
               Privacy Policy
             </Link>

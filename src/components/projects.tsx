@@ -21,7 +21,7 @@ export function Projects() {
     >
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Previous Projects</h2>
-        <h3 className="mx-auto max-w-2xl text-xl text-balance text-neutral-400">
+        <h3 className="mx-auto max-w-2xl text-xl text-balance text-muted-foreground">
           Take a closer look at the projects we&apos;ve built and the stories of the people who rely
           on our dedication and skill.
         </h3>
@@ -45,6 +45,7 @@ export function Projects() {
                     fill
                     className="object-cover"
                   />
+                  
                   <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
 
                   <h2 className="absolute bottom-0 left-0 p-6 text-2xl font-bold lg:text-3xl">

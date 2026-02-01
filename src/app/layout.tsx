@@ -21,7 +21,7 @@ const geist = Geist({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} dark scroll-smooth`}>
-      <body className="min-h-screen overflow-x-hidden bg-neutral-950 text-white antialiased">
+      <body className="min-h-screen overflow-x-hidden antialiased">
         <Header />
 
         <main>{children}</main>
