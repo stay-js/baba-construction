@@ -40,8 +40,8 @@ export function Contact() {
               icon: MapPin,
             },
           ].map((card) => (
-            <Card className="bg-card" key={card.title}>
-              <CardContent className="flex items-start gap-4 p-8">
+            <Card className="py-8 h-full justify-center" key={card.title}>
+              <CardContent className="flex items-start gap-4 lg:px-8">
                 <div className="rounded-lg bg-foreground/10 p-3">
                   <card.icon className="size-4 sm:size-6" />
                 </div>
