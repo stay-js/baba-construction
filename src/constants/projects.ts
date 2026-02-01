@@ -25,14 +25,19 @@ export const projects = [
     images: ['/projects/35-hudson-2.jpg', '/projects/35-hudson-3.jpg'],
   },
   {
-    title: 'Tribecca Green',
-    mainImage: '/projects/tribecca-1.jpg',
-    images: ['/projects/tribecca-2.jpg', '/projects/tribecca-3.jpg'],
+    title: '80 Brookdale Avenue',
+    mainImage: '/projects/80-brookdale-1.jpg',
+    images: ['/projects/80-brookdale-2.jpg', '/projects/80-brookdale-3.jpg'],
   },
   {
     title: '450 Washington Street',
     mainImage: '/projects/450-wash-1.jpg',
     images: ['/projects/450-wash-2.jpg', '/projects/450-wash-3.jpg'],
+  },
+  {
+    title: 'Tribecca Green',
+    mainImage: '/projects/tribecca-1.jpg',
+    images: ['/projects/tribecca-2.jpg', '/projects/tribecca-3.jpg'],
   },
   {
     title: 'Trump Tower',
