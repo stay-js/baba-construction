@@ -5,41 +5,40 @@ import Link from 'next/link';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import z from 'zod';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'sonner';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 import sendEmail from '~/app/contact/actions';
-import { Label } from '~/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
-import { Input } from '~/components/ui/input';
-import { Textarea } from '~/components/ui/textarea';
 import { Button } from '~/components/ui/button';
+import { FormInput, FormTextarea } from '~/components/form';
 import { env } from '~/env.js';
 
 const formSchema = z.object({
-  firstName: z.string().min(1, 'First name is required!'),
-  lastName: z.string().min(1, 'Last name is required!'),
-  email: z.email('Invalid email address!'),
+  firstName: z.string().min(1, { error: 'First name is required!' }),
+  lastName: z.string().min(1, { error: 'Last name is required!' }),
+  email: z.email({ error: 'Invalid email address!' }),
   phone: z.string().optional(),
-  message: z.string().min(1, 'Message is required!'),
+  message: z.string().min(1, { error: 'Message is required!' }),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
 
-const defaultValues: FormSchema = {
+const defaultValues = {
   firstName: '',
   lastName: '',
   email: '',
   phone: '',
   message: '',
-};
+} satisfies FormSchema;
 
 export const ContactForm: React.FC = () => {
   const captchaRef = useRef<ReCAPTCHA>(null);
 
   const {
-    register,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    control,
+    formState: { isSubmitSuccessful },
     reset,
   } = useForm<FormSchema>({ resolver: zodResolver(formSchema), defaultValues });
 
@@ -65,6 +64,7 @@ export const ContactForm: React.FC = () => {
       <CardHeader>
         <CardTitle className="text-2xl">Get In Touch</CardTitle>
       </CardHeader>
+
       <CardContent className="h-full">
         <form
           className="flex h-full flex-col justify-between gap-8"
@@ -72,85 +72,46 @@ export const ContactForm: React.FC = () => {
         >
           <div className="flex flex-col gap-4">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <Label htmlFor="first-name" className="text-base">
-                    First Name: <span className="text-red-500">*</span>
-                  </Label>
+              <FormInput
+                required
+                name="firstName"
+                control={control}
+                label="First Name:"
+                placeholder="John"
+              />
 
-                  {errors.firstName && (
-                    <span className="text-xs text-red-500 dark:text-red-500">
-                      {errors.firstName.message}
-                    </span>
-                  )}
-                </div>
-                <Input id="first-name" type="text" {...register('firstName')} />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <Label htmlFor="last-name" className="text-base">
-                    Last Name: <span className="text-red-500">*</span>
-                  </Label>
-
-                  {errors.lastName && (
-                    <span className="text-xs text-red-500 dark:text-red-500">
-                      {errors.lastName.message}
-                    </span>
-                  )}
-                </div>
-
-                <Input id="last-name" type="text" {...register('lastName')} />
-              </div>
+              <FormInput
+                required
+                name="lastName"
+                control={control}
+                label="Last Name:"
+                placeholder="Doe"
+              />
             </div>
 
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between gap-2">
-                <Label htmlFor="email" className="text-base">
-                  Email: <span className="text-red-500">*</span>
-                </Label>
+            <FormInput
+              required
+              name="email"
+              control={control}
+              label="Email:"
+              placeholder="john.doe@example.com"
+            />
 
-                {errors.email && (
-                  <span className="text-xs text-red-500 dark:text-red-500">
-                    {errors.email.message}
-                  </span>
-                )}
-              </div>
+            <FormInput
+              name="phone"
+              control={control}
+              label="Phone:"
+              placeholder="+1 (914) 240-3509"
+            />
 
-              <Input id="email" type="text" {...register('email')} />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between gap-2">
-                <Label htmlFor="phone" className="text-base">
-                  Phone Number:
-                </Label>
-
-                {errors.phone && (
-                  <span className="text-xs text-red-500 dark:text-red-500">
-                    {errors.phone.message}
-                  </span>
-                )}
-              </div>
-
-              <Input id="phone" type="text" {...register('phone')} />
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center justify-between gap-2">
-                <Label htmlFor="message" className="text-base">
-                  Message: <span className="text-red-500">*</span>
-                </Label>
-
-                {errors.message && (
-                  <span className="text-xs text-red-500 dark:text-red-500">
-                    {errors.message.message}
-                  </span>
-                )}
-              </div>
-
-              <Textarea id="message" className="min-h-40 resize-none" {...register('message')} />
-            </div>
+            <FormTextarea
+              required
+              className="min-h-40 resize-none"
+              name="message"
+              control={control}
+              label="Message:"
+              placeholder="Please try to be as detailed as possible..."
+            />
 
             <div className="flex flex-col gap-4 text-sm">
               <div>

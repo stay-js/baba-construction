@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { z } from 'zod';
+
 import { validateCaptchaResponse } from '~/lib/validate-captcha-response';
 import { env } from '~/env.js';
 
@@ -33,7 +34,8 @@ export default async function sendEmail(formData: Data) {
     prefix: '@upstash/ratelimit',
   });
 
-  const ip = (await headers()).get('x-forwarded-for');
+  const heads = await headers();
+  const ip = heads.get('x-forwarded-for');
   if (!ip) throw new Error('No client IP');
 
   const result = await ratelimit.limit(ip);

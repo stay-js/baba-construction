@@ -1,6 +1,7 @@
-import { Card, CardContent } from '~/components/ui/card';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { ContactForm } from './contact-form';
+
+import { Card, CardContent } from '~/components/ui/card';
+import { ContactForm } from '~/components/contact-form';
 
 export const Contact: React.FC = () => (
   <section
@@ -14,10 +15,10 @@ export const Contact: React.FC = () => (
       </h3>
     </div>
 
-    <div className="grid gap-8 lg:grid-cols-2">
+    <div className="grid gap-6 lg:grid-cols-2">
       <ContactForm />
 
-      <div className="flex flex-col justify-between gap-8">
+      <div className="flex flex-col justify-between gap-6">
         {[
           {
             title: 'Call Us',
@@ -41,11 +42,15 @@ export const Contact: React.FC = () => (
           <Card className="bg-card" key={card.title}>
             <CardContent className="flex items-start gap-4 p-8">
               <div className="rounded-lg bg-neutral-800 p-3">
-                <card.icon className="h-4 w-4 sm:h-6 sm:w-6" />
+                <card.icon className="size-4 sm:size-6" />
               </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="font-semibold sm:text-lg">{card.title}</h3>
-                <p className="text-neutral-400">{card.description}</p>
+
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3 className="font-semibold sm:text-lg">{card.title}</h3>
+                  <p className="text-neutral-400">{card.description}</p>
+                </div>
+
                 <p className="font-semibold text-balance wrap-anywhere sm:text-lg md:text-xl">
                   {card.info}
                 </p>
