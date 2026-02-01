@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { keywords } from '~/constants/keywords';
 
-export const createMetadata = ({
+export function createMetadata({
   path,
   title,
   absoluteTitle,
@@ -13,65 +13,67 @@ export const createMetadata = ({
   absoluteTitle?: string;
   description: string;
   noIndex?: boolean;
-}): Metadata => ({
-  metadataBase: new URL('https://www.babaconstructioncorp.com'),
+}): Metadata {
+  return {
+    metadataBase: new URL('https://www.babaconstructioncorp.com'),
 
-  authors: [{ name: 'Zétény Nagy', url: 'https://znagy.hu' }],
-  creator: 'Zétény Nagy',
+    authors: [{ name: 'Zétény Nagy', url: 'https://znagy.hu' }],
+    creator: 'Zétény Nagy',
 
-  keywords: keywords.join(', '),
+    keywords: keywords.join(', '),
 
-  title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
-  description,
+    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
+    description,
 
-  applicationName: 'BABA Construction',
+    applicationName: 'BABA Construction',
 
-  robots: noIndex
-    ? {
-        index: false,
-        follow: false,
-        'max-video-preview': -1,
-        'max-image-preview': 'none',
-        'max-snippet': -1,
-      }
-    : {
-        index: true,
-        follow: true,
-        googleBot: {
+    robots: noIndex
+      ? {
+          index: false,
+          follow: false,
+          'max-video-preview': -1,
+          'max-image-preview': 'none',
+          'max-snippet': -1,
+        }
+      : {
           index: true,
           follow: true,
-          'max-video-preview': -1,
-          'max-image-preview': 'large',
-          'max-snippet': -1,
+          googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+          },
         },
-      },
 
-  openGraph: {
-    type: 'website',
-    url: `url${path}`,
-    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
-    description,
-    siteName: 'BABA Construction Corp.',
-    locale: 'en-US',
-    images: [
-      {
-        url: '/logo.jpg',
-        width: 1000,
-        height: 1000,
-        alt: 'BABA Construction Corp.',
-        type: 'image/jpeg',
-      },
-    ],
-  },
+    openGraph: {
+      type: 'website',
+      url: `url${path}`,
+      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
+      description,
+      siteName: 'BABA Construction Corp.',
+      locale: 'en-US',
+      images: [
+        {
+          url: '/logo.jpg',
+          width: 1000,
+          height: 1000,
+          alt: 'BABA Construction Corp.',
+          type: 'image/jpeg',
+        },
+      ],
+    },
 
-  twitter: {
-    card: 'summary',
-    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
-    description,
-    images: ['/logo.jpg'],
-  },
+    twitter: {
+      card: 'summary',
+      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
+      description,
+      images: ['/logo.jpg'],
+    },
 
-  icons: {
-    icon: '/favicon.ico',
-  },
-});
+    icons: {
+      icon: '/favicon.ico',
+    },
+  };
+}

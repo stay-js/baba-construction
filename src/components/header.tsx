@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
 import { NAV_ITEMS } from '~/constants/nav-items';
 
-const LinkOrDiv: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+function LinkOrDiv({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   const className = 'flex cursor-pointer items-center gap-3 justify-self-start select-none';
@@ -29,9 +30,9 @@ const LinkOrDiv: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {children}
     </Link>
   );
-};
+}
 
-export const Header: React.FC = () => {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -131,4 +132,4 @@ export const Header: React.FC = () => {
       )}
     </header>
   );
-};
+}

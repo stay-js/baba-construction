@@ -1,21 +1,21 @@
 'use server';
 
 import { headers } from 'next/headers';
-import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
 import { z } from 'zod';
+import nodemailer from 'nodemailer';
 
 import { validateCaptchaResponse } from '~/lib/validate-captcha-response';
 import { env } from '~/env.js';
 
 const schema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
   email: z.email(),
   phone: z.string().optional(),
-  message: z.string(),
-  token: z.string(),
+  message: z.string().min(1),
+  token: z.string().min(1),
 });
 
 type Data = z.infer<typeof schema>;

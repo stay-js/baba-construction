@@ -1,22 +1,24 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Award, Users, Calendar, ChevronDown, MoveRight } from 'lucide-react';
+
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
-import Link from 'next/link';
 
-export const Hero: React.FC = () => {
+export function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => setIsVisible(true), []);
 
-  const scrollToNext = () => {
+  function scrollToNext() {
     window.scrollTo({
       top: window.innerHeight - 32,
       behavior: 'smooth',
     });
-  };
+  }
 
   return (
     <section className="relative isolate grid min-h-screen place-content-center overflow-hidden py-16">
@@ -28,7 +30,7 @@ export const Hero: React.FC = () => {
           alt="BABA Construction"
           className="animation-duration-5000 h-full w-full animate-pulse object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black/70" />
       </div>
 
       <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-16 px-4 text-center text-white">
@@ -125,4 +127,4 @@ export const Hero: React.FC = () => {
       </button>
     </section>
   );
-};
+}

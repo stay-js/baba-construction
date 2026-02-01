@@ -1,7 +1,8 @@
 import type { Viewport } from 'next';
 import { Geist } from 'next/font/google';
-import { Header } from '~/components/header';
+
 import { Toaster } from '~/components/ui/sonner';
+import { Header } from '~/components/header';
 import { Footer } from '~/components/footer';
 
 import '~/styles/globals.css';
@@ -17,18 +18,18 @@ const geist = Geist({
   variable: '--font-geist-sans',
 });
 
-const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ children }) => (
-  <html lang="en" className={`${geist.variable} dark scroll-smooth`}>
-    <body className="min-h-screen overflow-x-hidden bg-neutral-950 text-white antialiased">
-      <Header />
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${geist.variable} dark scroll-smooth`}>
+      <body className="min-h-screen overflow-x-hidden bg-neutral-950 text-white antialiased">
+        <Header />
 
-      <main>{children}</main>
+        <main>{children}</main>
 
-      <Footer />
+        <Footer />
 
-      <Toaster position="top-left" />
-    </body>
-  </html>
-);
-
-export default RootLayout;
+        <Toaster position="top-left" />
+      </body>
+    </html>
+  );
+}
