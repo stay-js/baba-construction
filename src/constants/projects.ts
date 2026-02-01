@@ -40,6 +40,11 @@ export const projects = [
     images: ['/projects/tribecca-2.jpg', '/projects/tribecca-3.jpg'],
   },
   {
+    title: "Birdie's",
+    mainImage: '/projects/birdies-1.jpg',
+    images: ['/projects/birdies-2.jpg', '/projects/birdies-3.jpg'],
+  },
+  {
     title: 'Trump Tower',
     mainImage: '/projects/trump-1.jpg',
     images: ['/projects/trump-2.jpg', '/projects/trump-3.jpg'],
