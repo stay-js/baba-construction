@@ -30,11 +30,11 @@ export function Hero() {
           alt="BABA Construction"
           className="animation-duration-5000 h-full w-full animate-pulse object-cover"
         />
-        
+
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black/70" />
       </div>
 
-      <div className="relative z-10 container mx-auto flex max-w-4xl flex-col gap-16 px-4 text-center text-foreground">
+      <div className="text-foreground relative z-10 container flex max-w-4xl flex-col gap-16 text-center">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
             <h1 className="text-5xl font-bold text-balance md:text-7xl">
@@ -58,7 +58,7 @@ export function Hero() {
 
             <h2
               className={cn(
-                'text-xl text-balance text-foreground/80 opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
+                'text-foreground/80 text-xl text-balance opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
                 isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
               )}
             >
@@ -105,9 +105,9 @@ export function Hero() {
           ].map((item) => (
             <div
               key={item.title}
-              className="group animate-fade-in-up flex flex-col items-center gap-2 transition-colors duration-300 hover:text-muted-foreground"
+              className="group animate-fade-in-up hover:text-muted-foreground flex flex-col items-center gap-2 transition-colors duration-300"
             >
-              <span className="animate-float text-muted-foreground transition-colors duration-300 group-hover:text-muted-foreground/80">
+              <span className="animate-float text-muted-foreground group-hover:text-muted-foreground/80 transition-colors duration-300">
                 <item.icon size={28} />
               </span>
 
@@ -122,7 +122,7 @@ export function Hero() {
 
       <button
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer text-foreground transition-colors hover:text-muted-foreground"
+        className="text-foreground hover:text-muted-foreground absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer transition-colors"
       >
         <ChevronDown size={28} />
       </button>

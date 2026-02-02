@@ -5,21 +5,18 @@ import { ContactForm } from '~/components/contact-form';
 
 export function Contact() {
   return (
-    <section
-      id="contact"
-      className="container mx-auto flex scroll-m-8 flex-col gap-16 px-4 py-20 sm:px-6 lg:px-8"
-    >
+    <section id="contact" className="container flex scroll-m-8 flex-col gap-16 py-20">
       <div className="flex flex-col gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Let&apos;s Discuss Your Project</h2>
-        <h3 className="mx-auto max-w-2xl text-xl text-balance text-muted-foreground">
+        <h3 className="text-muted-foreground mx-auto max-w-2xl text-xl text-balance">
           Ready to transform your space? Get in touch with us.
         </h3>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         <ContactForm />
 
-        <div className="flex flex-col justify-between gap-6">
+        <div className="flex flex-col justify-between gap-4">
           {[
             {
               title: 'Call Us',
@@ -40,9 +37,9 @@ export function Contact() {
               icon: MapPin,
             },
           ].map((card) => (
-            <Card className="py-8 h-full justify-center" key={card.title}>
+            <Card className="h-full justify-center py-8" key={card.title}>
               <CardContent className="flex items-start gap-4 lg:px-8">
-                <div className="rounded-lg bg-foreground/10 p-3">
+                <div className="bg-foreground/10 rounded-lg p-3">
                   <card.icon className="size-4 sm:size-6" />
                 </div>
 

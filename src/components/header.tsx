@@ -52,7 +52,7 @@ export function Header() {
           : '-translate-y-full bg-transparent',
       )}
     >
-      <div className="grid grid-cols-[1fr_auto] items-center p-4 lg:grid-cols-3">
+      <div className="container grid grid-cols-[1fr_auto] items-center py-4 lg:grid-cols-3">
         <LinkOrDiv>
           <Image
             className="rounded-lg"
@@ -63,27 +63,30 @@ export function Header() {
           />
 
           <div className="flex flex-col">
-            <span className="block font-bold text-foreground sm:text-xl">BABA Construction</span>
-            <span className="block text-sm text-muted-foreground">
-              Building Beyond Walls<span className='max-sm:hidden'>, Since 2010</span>
+            <span className="text-foreground block font-bold sm:text-xl">BABA Construction</span>
+            <span className="text-muted-foreground block text-sm">
+              Building Beyond Walls<span className="max-sm:hidden">, Since 2010</span>
             </span>
           </div>
         </LinkOrDiv>
 
-        <nav className="hidden items-center space-x-8 justify-self-center lg:flex">
+        <nav className="hidden items-center gap-6 justify-self-center lg:flex">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-foreground/90 transition-all duration-300 hover:text-muted-foreground"
+              className="text-foreground/90 hover:text-muted-foreground transition-all duration-300"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center space-x-4 justify-self-end">
-          <Button variant="secondary" className="transition-all duration-300 hover:scale-105 max-lg:hidden">
+        <div className="flex items-center gap-4 justify-self-end">
+          <Button
+            variant="secondary"
+            className="transition-all duration-300 hover:scale-105 max-lg:hidden"
+          >
             <Link href="#contact">Get In Touch</Link>
           </Button>
 
@@ -116,13 +119,13 @@ export function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="border-t p-4 lg:hidden">
+        <div className="container border-t py-4 lg:hidden">
           <nav className="animate-fade-in-up flex flex-col gap-4">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={`${item.href}-mobile`}
                 href={item.href}
-                className="text-foreground/90 transition-colors hover:text-muted-foreground"
+                className="text-foreground/90 hover:text-muted-foreground transition-colors"
               >
                 {item.label}
               </Link>

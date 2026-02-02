@@ -4,7 +4,7 @@ import { services } from '~/constants/services';
 export function Services() {
   return (
     <section id="services" className="bg-card scroll-m-8 py-20">
-      <div className="container mx-auto flex flex-col gap-16 px-4 sm:px-6 lg:px-8">
+      <div className="container flex flex-col gap-16">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="text-4xl font-bold text-balance">Our Comprehensive Services</h2>
           <h3 className="text-muted-foreground mx-auto max-w-2xl text-xl text-balance">
@@ -12,7 +12,7 @@ export function Services() {
           </h3>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <Card
               key={index}
