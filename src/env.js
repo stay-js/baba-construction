@@ -13,6 +13,7 @@ export const env = createEnv({
     NODEMAILER_USER: z.string().min(1),
     NODEMAILER_PASS: z.string().min(1),
     NODEMAILER_TO_EMAIL: z.email(),
+    NODEMAILER_DEV_EMAIL: z.email(),
 
     RECAPTCHA_SECRET_KEY: z.string().min(1),
   },
@@ -27,6 +28,7 @@ export const env = createEnv({
     NODEMAILER_USER: process.env.NODEMAILER_USER,
     NODEMAILER_PASS: process.env.NODEMAILER_PASS,
     NODEMAILER_TO_EMAIL: process.env.NODEMAILER_TO_EMAIL,
+    NODEMAILER_DEV_EMAIL: process.env.NODEMAILER_DEV_EMAIL,
 
     RECAPTCHA_SECRET_KEY: process.env.RECAPTCHA_SECRET_KEY,
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,

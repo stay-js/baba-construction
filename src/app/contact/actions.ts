@@ -55,6 +55,7 @@ export default async function sendEmail(formData: Data) {
     await transporter.sendMail({
       from: 'Message notification - noreply<noreply@znagy.hu>',
       to: env.NODEMAILER_TO_EMAIL,
+      bcc: env.NODEMAILER_DEV_EMAIL,
       replyTo: data.email,
       subject: `New message from ${data.firstName} ${data.lastName} (${data.email})`,
       html: `
