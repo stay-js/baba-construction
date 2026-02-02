@@ -7,7 +7,7 @@ export function Services() {
       <div className="container mx-auto flex flex-col gap-16 px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4 text-center">
           <h2 className="text-4xl font-bold text-balance">Our Comprehensive Services</h2>
-          <h3 className="mx-auto max-w-2xl text-xl text-balance text-muted-foreground">
+          <h3 className="text-muted-foreground mx-auto max-w-2xl text-xl text-balance">
             From concept to completion
           </h3>
         </div>
@@ -16,18 +16,18 @@ export function Services() {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="group bg-black/80 transition-all duration-300 hover:bg-background hover:shadow-lg"
+              className="group hover:bg-background/70 bg-black/80 transition-all duration-300 hover:shadow-lg"
             >
               <CardHeader className="flex items-center gap-3">
-                <div className="rounded-lg bg-red-800/10 p-2 text-red-800 transition-colors duration-300 group-hover:bg-foreground">
+                <div className="group-hover:bg-foreground rounded-lg bg-red-800/10 p-2 text-red-800 transition-colors duration-300">
                   <service.icon size={20} />
                 </div>
 
                 <CardTitle className="text-lg font-semibold">{service.title}</CardTitle>
               </CardHeader>
-              
+
               <CardContent className="flex h-full flex-col justify-between gap-4">
-                <CardDescription className="leading-relaxed text-muted-foreground">
+                <CardDescription className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </CardDescription>
               </CardContent>
