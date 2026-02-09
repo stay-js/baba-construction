@@ -48,4 +48,10 @@ export const testimonials = [
     author: 'David Wender',
     role: 'Home Owner',
   },
+  {
+    testimonial:
+      'I am writing this letter to provide my highest endorsement for BABA Construction Corp. They recently completed a comprehensive turnover of my two-bedroom rental apartment at 15 Hudson Yards, and I could not be more impressed with the exceptional quality of their work.',
+    author: 'Joy Handler',
+    role: 'Associate Broker',
+  },
 ];
