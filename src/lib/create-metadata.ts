@@ -49,7 +49,7 @@ export function createMetadata({
 
     openGraph: {
       type: 'website',
-      url: `url${path}`,
+      url: path,
       title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
       description,
       siteName: 'BABA Construction Corp.',
