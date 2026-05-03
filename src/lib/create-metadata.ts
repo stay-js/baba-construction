@@ -72,6 +72,10 @@ export function createMetadata({
       images: ['/logo.jpg'],
     },
 
+    alternates: {
+      canonical: `https://www.babaconstructioncorp.com${path}`,
+    },
+
     icons: {
       icon: '/favicon.ico',
     },
