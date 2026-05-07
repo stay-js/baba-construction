@@ -2,8 +2,6 @@ import { SiInstagram } from '@icons-pack/react-simple-icons';
 import { Building2, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
 
-import { NAV_ITEMS } from '~/constants/nav-items';
-
 export function Footer() {
   return (
     <footer className="bg-card/80 border-t">
@@ -55,61 +53,42 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8 md:flex-row lg:gap-16 xl:gap-24">
-            <div className="flex flex-col gap-4">
-              <h4 className="text-foreground text-lg font-semibold">Quick Links</h4>
+          <div className="flex flex-col gap-4">
+            <h4 className="text-foreground text-lg font-semibold">Contact Info</h4>
 
-              <ul className="flex flex-col gap-2">
-                {NAV_ITEMS.map((item) => (
-                  <li key={`footer-${item.href}`}>
-                    <Link
-                      className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <MapPin className="size-5" />
 
-            <div className="flex flex-col gap-4">
-              <h4 className="text-foreground text-lg font-semibold">Contact Info</h4>
+                <p className="text-muted-foreground text-sm">
+                  9 Alta Vista Circle
+                  <br />
+                  Irvington, NY, 10533
+                </p>
+              </div>
 
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3">
-                  <MapPin className="size-5" />
+              <div className="flex items-center gap-3">
+                <Phone className="size-5" />
 
-                  <p className="text-muted-foreground text-sm">
-                    9 Alta Vista Circle
-                    <br />
-                    Irvington, NY, 10533
-                  </p>
-                </div>
+                <Link
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
+                  href="tel:+19142403509"
+                  target="_blank"
+                >
+                  +1 (914) 240-3509
+                </Link>
+              </div>
 
-                <div className="flex items-center gap-3">
-                  <Phone className="size-5" />
+              <div className="flex items-center gap-3">
+                <Mail className="size-5" />
 
-                  <Link
-                    className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
-                    href="tel:+19142403509"
-                    target="_blank"
-                  >
-                    +1 (914) 240-3509
-                  </Link>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Mail className="size-5" />
-
-                  <Link
-                    className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
-                    href="mailto:babaconstructioncorp@gmail.com"
-                    target="_blank"
-                  >
-                    babaconstructioncorp@gmail.com
-                  </Link>
-                </div>
+                <Link
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors duration-200"
+                  href="mailto:babaconstructioncorp@gmail.com"
+                  target="_blank"
+                >
+                  babaconstructioncorp@gmail.com
+                </Link>
               </div>
             </div>
           </div>
