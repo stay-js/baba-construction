@@ -2,7 +2,6 @@
 
 import { Award, Calendar, ChevronDown, MoveRight, Users } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 
 import { Button } from '~/components/ui/button';
 import { useMounted } from '~/hooks/use-mounted';
@@ -10,13 +9,6 @@ import { cn } from '~/lib/utils';
 
 export function Hero() {
   const isMounted = useMounted();
-
-  function scrollToNext() {
-    window.scrollTo({
-      behavior: 'smooth',
-      top: window.innerHeight - 32,
-    });
-  }
 
   return (
     <section className="relative isolate grid min-h-screen place-content-center overflow-hidden py-16">
@@ -73,24 +65,26 @@ export function Hero() {
             )}
           >
             <Button
-              asChild
               className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               size="lg"
               variant="secondary"
             >
-              <Link href="#contact">
-                <span>Contact Us</span>
-                <MoveRight />
-              </Link>
+              <span>Contact Us</span>
+              <MoveRight />
             </Button>
 
             <Button
-              asChild
               className="w-fit transition-all duration-300 hover:scale-105"
+              onClick={() => {
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               size="lg"
               variant="outline"
             >
-              <Link href="#projects">Previous Projects</Link>
+              Previous Projects
             </Button>
           </div>
         </div>
@@ -120,7 +114,9 @@ export function Hero() {
 
       <button
         className="text-foreground hover:text-muted-foreground absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer transition-colors"
-        onClick={scrollToNext}
+        onClick={() => {
+          window.scrollTo({ behavior: 'smooth', top: window.innerHeight - 32 });
+        }}
       >
         <ChevronDown className="size-7" />
       </button>
