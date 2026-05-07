@@ -10,6 +10,8 @@ import { NAV_ITEMS } from '~/constants/nav-items';
 import { cn } from '~/lib/utils';
 
 export function Header() {
+  const pathname = usePathname();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -19,6 +21,28 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navLinkClass = 'text-foreground/90 hover:text-muted-foreground transition-all duration-300';
+
+  function renderNavItem(item: (typeof NAV_ITEMS)[number], key: string) {
+    if (pathname === '/')
+      return (
+        <button
+          className={cn(navLinkClass, 'cursor-pointer')}
+          key={key}
+          onClick={() => scrollToSection(item.href)}
+          type="button"
+        >
+          {item.label}
+        </button>
+      );
+
+    return (
+      <Link className={navLinkClass} href={item.href} key={key}>
+        {item.label}
+      </Link>
+    );
+  }
 
   return (
     <header
@@ -48,24 +72,27 @@ export function Header() {
         </LinkOrDiv>
 
         <nav className="hidden items-center gap-6 justify-self-center lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              className="text-foreground/90 hover:text-muted-foreground transition-all duration-300"
-              href={item.href}
-              key={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {NAV_ITEMS.map((item) => renderNavItem(item, item.href))}
         </nav>
 
         <div className="flex items-center gap-4 justify-self-end">
-          <Button
-            className="transition-all duration-300 hover:scale-105 max-lg:hidden"
-            variant="secondary"
-          >
-            <Link href="#contact">Get In Touch</Link>
-          </Button>
+          {pathname === '/' ? (
+            <Button
+              className="transition-all duration-300 hover:scale-105 max-lg:hidden"
+              onClick={() => scrollToSection('contact')}
+              variant="secondary"
+            >
+              Get In Touch
+            </Button>
+          ) : (
+            <Button
+              asChild
+              className="transition-all duration-300 hover:scale-105 max-lg:hidden"
+              variant="secondary"
+            >
+              <Link href="/#contact">Get In Touch</Link>
+            </Button>
+          )}
 
           <button
             className="h-6 w-6 cursor-pointer lg:hidden"
@@ -98,15 +125,7 @@ export function Header() {
       {isMobileMenuOpen && (
         <div className="container border-t py-4 lg:hidden">
           <nav className="animate-fade-in-up flex flex-col gap-4">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                className="text-foreground/90 hover:text-muted-foreground transition-colors"
-                href={item.href}
-                key={`${item.href}-mobile`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV_ITEMS.map((item) => renderNavItem(item, `${item.href}-mobile`))}
           </nav>
         </div>
       )}
@@ -135,4 +154,9 @@ function LinkOrDiv({ children }: { children: React.ReactNode }) {
       {children}
     </Link>
   );
+}
+
+function scrollToSection(href: string) {
+  const id = href.replace('/#', '');
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
