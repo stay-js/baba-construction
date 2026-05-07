@@ -1,20 +1,20 @@
 'use server';
 
-import { headers } from 'next/headers';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { z } from 'zod';
+import { headers } from 'next/headers';
 import nodemailer from 'nodemailer';
+import { z } from 'zod';
 
-import { validateCaptchaResponse } from '~/lib/validate-captcha-response';
 import { env } from '~/env.js';
+import { validateCaptchaResponse } from '~/lib/validate-captcha-response';
 
 const schema = z.object({
+  email: z.email(),
   firstName: z.string().min(1),
   lastName: z.string().min(1),
-  email: z.email(),
-  phone: z.string().optional(),
   message: z.string().min(1),
+  phone: z.string().optional(),
   token: z.string().min(1),
 });
 
@@ -28,10 +28,10 @@ export default async function sendEmail(formData: Data) {
   if (!isHuman) throw new Error('Captcha validation failed');
 
   const ratelimit = new Ratelimit({
-    redis: Redis.fromEnv(),
-    limiter: Ratelimit.slidingWindow(3, '1 m'),
     analytics: true,
+    limiter: Ratelimit.slidingWindow(3, '1 m'),
     prefix: '@upstash/ratelimit',
+    redis: Redis.fromEnv(),
   });
 
   const heads = await headers();
@@ -43,21 +43,18 @@ export default async function sendEmail(formData: Data) {
 
   try {
     const transporter = nodemailer.createTransport({
+      auth: {
+        pass: env.NODEMAILER_PASS,
+        user: env.NODEMAILER_USER,
+      },
       host: env.NODEMAILER_HOST,
       port: Number(env.NODEMAILER_PORT),
       secure: true,
-      auth: {
-        user: env.NODEMAILER_USER,
-        pass: env.NODEMAILER_PASS,
-      },
     });
 
     await transporter.sendMail({
-      from: 'Message notification - noreply<noreply@znagy.hu>',
-      to: env.NODEMAILER_TO_EMAIL,
       bcc: env.NODEMAILER_DEV_EMAIL,
-      replyTo: data.email,
-      subject: `New message from ${data.firstName} ${data.lastName} (${data.email})`,
+      from: 'Message notification - noreply<noreply@znagy.hu>',
       html: `
 				<div>
         First Name: <b>${data.firstName}</b>&emsp;Last Name: <b>${data.lastName}</b>
@@ -74,6 +71,9 @@ export default async function sendEmail(formData: Data) {
 				${data.message.replace(/\n/g, '<br />')}
 				</div>
 				`,
+      replyTo: data.email,
+      subject: `New message from ${data.firstName} ${data.lastName} (${data.email})`,
+      to: env.NODEMAILER_TO_EMAIL,
     });
 
     return { success: true };

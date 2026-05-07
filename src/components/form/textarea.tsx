@@ -1,45 +1,42 @@
-import {
-  Controller,
-  type Control,
-  type FieldPath,
-  type FieldValues,
-  type PathValue,
-} from 'react-hook-form';
+import type { Control, FieldPath, FieldValues, PathValue } from 'react-hook-form';
+
+import { Controller } from 'react-hook-form';
 
 import { Field, FieldError, FieldGroup, FieldLabel } from '~/components/ui/field';
 import { Textarea } from '~/components/ui/textarea';
 
-type TextareaValue = React.TextareaHTMLAttributes<HTMLTextAreaElement>['value'] | null;
-
 type FormTextareaProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = {
-  name: TName;
   control: Control<TFieldValues>;
+  name: TName;
+
+  className?: string;
   disabled?: boolean;
   label: string;
   placeholder?: string;
-  className?: string;
   required?: boolean;
 } & (PathValue<TFieldValues, TName> extends TextareaValue
-  ? {}
+  ? {} // eslint-disable-line @typescript-eslint/no-empty-object-type
   : { _error: 'Field value must match input value type' });
+
+type TextareaValue = null | React.TextareaHTMLAttributes<HTMLTextAreaElement>['value'];
 
 export function FormTextarea<
   TFieldValues extends FieldValues,
   TName extends FieldPath<TFieldValues>,
 >({
-  name,
+  className,
   control,
   disabled,
   label,
+  name,
   placeholder,
-  className,
   required,
 }: FormTextareaProps<TFieldValues, TName>) {
   return (
     <FieldGroup>
       <Controller
-        name={name}
         control={control}
+        name={name}
         render={({ field, fieldState }) => (
           <Field data-invalid={fieldState.invalid}>
             <div className="flex flex-wrap justify-between gap-x-4 gap-y-2">
@@ -51,12 +48,12 @@ export function FormTextarea<
 
             <Textarea
               {...field}
-              className={className}
-              id={name}
-              disabled={disabled}
-              value={field.value ?? ''}
-              placeholder={placeholder}
               aria-invalid={fieldState.invalid}
+              className={className}
+              disabled={disabled}
+              id={name}
+              placeholder={placeholder}
+              value={field.value ?? ''}
             />
           </Field>
         )}

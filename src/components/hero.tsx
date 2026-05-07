@@ -1,22 +1,20 @@
 'use client';
 
-import Link from 'next/link';
+import { Award, Calendar, ChevronDown, MoveRight, Users } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { Award, Users, Calendar, ChevronDown, MoveRight } from 'lucide-react';
+import Link from 'next/link';
 
 import { Button } from '~/components/ui/button';
+import { useMounted } from '~/hooks/use-mounted';
 import { cn } from '~/lib/utils';
 
 export function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => setIsVisible(true), []);
+  const isMounted = useMounted();
 
   function scrollToNext() {
     window.scrollTo({
-      top: window.innerHeight - 32,
       behavior: 'smooth',
+      top: window.innerHeight - 32,
     });
   }
 
@@ -24,11 +22,11 @@ export function Hero() {
     <section className="relative isolate grid min-h-screen place-content-center overflow-hidden py-16">
       <div className="absolute inset-0 z-0">
         <Image
-          priority
-          fill
-          src="/hero-bg.jpg"
           alt="BABA Construction"
           className="animation-duration-5000 h-full w-full animate-pulse object-cover"
+          fill
+          priority
+          src="/hero-bg.jpg"
         />
 
         <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/60 to-black/70" />
@@ -41,7 +39,7 @@ export function Hero() {
               <span
                 className={cn(
                   'block transition-all duration-1000',
-                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
+                  isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
                 )}
               >
                 Building Beyond Walls,
@@ -49,7 +47,7 @@ export function Hero() {
               <span
                 className={cn(
                   'block transition-all duration-1400',
-                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
+                  isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
                 )}
               >
                 Creating Legacies
@@ -59,7 +57,7 @@ export function Hero() {
             <h2
               className={cn(
                 'text-foreground/80 text-xl text-balance opacity-90 transition-all delay-300 duration-1000 md:text-2xl',
-                isVisible ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
+                isMounted ? 'translate-y-0 opacity-90' : 'translate-y-10 opacity-0',
               )}
             >
               BABA Construction Corp. - Redefining Luxury Living in{' '}
@@ -71,14 +69,14 @@ export function Hero() {
           <div
             className={cn(
               'flex flex-col items-center justify-center gap-4 transition-all delay-500 duration-1000 sm:flex-row',
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
+              isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0',
             )}
           >
             <Button
               asChild
+              className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
               size="lg"
               variant="secondary"
-              className="flex w-fit gap-2 transition-all duration-300 hover:scale-105"
             >
               <Link href="#contact">
                 <span>Contact Us</span>
@@ -88,9 +86,9 @@ export function Hero() {
 
             <Button
               asChild
+              className="w-fit transition-all duration-300 hover:scale-105"
               size="lg"
               variant="outline"
-              className="w-fit transition-all duration-300 hover:scale-105"
             >
               <Link href="#projects">Previous Projects</Link>
             </Button>
@@ -99,16 +97,16 @@ export function Hero() {
 
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-12 py-24 max-md:hidden md:grid-cols-3 md:gap-8 md:py-6">
           {[
-            { title: '15+', description: 'Years Experience', icon: Calendar },
-            { title: 'Countless', description: 'Projects Completed', icon: Award },
-            { title: '100%', description: 'Client Satisfaction', icon: Users },
+            { description: 'Years Experience', icon: Calendar, title: '15+' },
+            { description: 'Projects Completed', icon: Award, title: 'Countless' },
+            { description: 'Client Satisfaction', icon: Users, title: '100%' },
           ].map((item) => (
             <div
+              className="group animate-fade-in-up hover:text-muted-foreground flex flex-col items-center gap-3 transition-colors duration-300"
               key={item.title}
-              className="group animate-fade-in-up hover:text-muted-foreground flex flex-col items-center gap-2 transition-colors duration-300"
             >
               <span className="animate-float text-muted-foreground group-hover:text-muted-foreground/80 transition-colors duration-300">
-                <item.icon size={28} />
+                <item.icon className="size-6" />
               </span>
 
               <div className="flex flex-col gap-0.5">
@@ -121,10 +119,10 @@ export function Hero() {
       </div>
 
       <button
-        onClick={scrollToNext}
         className="text-foreground hover:text-muted-foreground absolute bottom-8 left-1/2 -translate-x-1/2 transform animate-bounce cursor-pointer transition-colors"
+        onClick={scrollToNext}
       >
-        <ChevronDown size={28} />
+        <ChevronDown className="size-7" />
       </button>
     </section>
   );

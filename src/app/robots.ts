@@ -2,13 +2,13 @@ import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
+    host: 'https://www.babaconstructioncorp.com',
     rules: [
       {
-        userAgent: '*',
         allow: '/',
+        userAgent: '*',
       },
     ],
-    host: 'https://www.babaconstructioncorp.com',
     sitemap: 'https://www.babaconstructioncorp.com/sitemap.xml',
   };
 }

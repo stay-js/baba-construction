@@ -1,16 +1,16 @@
 import type { Viewport } from 'next';
+
 import { Geist } from 'next/font/google';
 
-import { Toaster } from '~/components/ui/sonner';
-import { Header } from '~/components/header';
 import { Footer } from '~/components/footer';
-
+import { Header } from '~/components/header';
+import { Toaster } from '~/components/ui/sonner';
 import '~/styles/globals.css';
 
 export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
   colorScheme: 'dark',
+  initialScale: 1,
+  width: 'device-width',
 };
 
 const geist = Geist({
@@ -20,7 +20,7 @@ const geist = Geist({
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} dark scroll-smooth`}>
+    <html className={`${geist.variable} dark scroll-smooth`} lang="en">
       <body className="min-h-screen overflow-x-hidden antialiased">
         <Header />
 

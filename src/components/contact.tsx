@@ -1,11 +1,11 @@
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 
-import { Card, CardContent } from '~/components/ui/card';
 import { ContactForm } from '~/components/contact-form';
+import { Card, CardContent } from '~/components/ui/card';
 
 export function Contact() {
   return (
-    <section id="contact" className="container flex scroll-m-8 flex-col gap-16 py-20">
+    <section className="container flex scroll-m-8 flex-col gap-16 py-20" id="contact">
       <div className="flex flex-col gap-4 text-center">
         <h2 className="text-4xl font-bold text-balance">Let&apos;s Discuss Your Project</h2>
         <h3 className="text-muted-foreground mx-auto max-w-2xl text-xl text-balance">
@@ -19,22 +19,22 @@ export function Contact() {
         <div className="flex flex-col justify-between gap-4">
           {[
             {
-              title: 'Call Us',
               description: 'Ready to discuss your project?',
-              info: '+1 (914) 240-3509',
               icon: Phone,
+              info: '+1 (914) 240-3509',
+              title: 'Call Us',
             },
             {
-              title: 'Email Us',
               description: 'Send us your project details',
-              info: 'babaconstructioncorp@gmail.com',
               icon: Mail,
+              info: 'babaconstructioncorp@gmail.com',
+              title: 'Email Us',
             },
             {
-              title: 'Service Area',
               description: 'We serve the greater NYC area',
-              info: 'Manhattan, Brooklyn, Queens, Bronx and Westchester County',
               icon: MapPin,
+              info: 'Manhattan, Brooklyn, Queens, Bronx and Westchester County',
+              title: 'Service Area',
             },
           ].map((card) => (
             <Card className="h-full justify-center py-8" key={card.title}>

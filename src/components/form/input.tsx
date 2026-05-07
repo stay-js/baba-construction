@@ -1,43 +1,46 @@
+import type { Control, FieldPath, FieldValues, PathValue } from 'react-hook-form';
+
 import React from 'react';
-import {
-  Controller,
-  type Control,
-  type FieldPath,
-  type FieldValues,
-  type PathValue,
-} from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 import { Field, FieldError, FieldGroup, FieldLabel } from '~/components/ui/field';
 import { Input } from '~/components/ui/input';
 
-type InputValue = React.InputHTMLAttributes<HTMLInputElement>['value'] | null;
-
-type FormInputProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = {
-  name: TName;
+type FormInputProps<
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+> = (PathValue<TFieldValues, TName> extends InputValue
+  ? {} // eslint-disable-line @typescript-eslint/no-empty-object-type
+  : { _error: 'Field value must match input value type' }) & {
   control: Control<TFieldValues>;
+  name: TName;
+
   disabled?: boolean;
   label: React.ReactNode;
+  max?: number;
+  min?: number;
   placeholder?: string;
-  type?: React.HTMLInputTypeAttribute;
   required?: boolean;
-} & (PathValue<TFieldValues, TName> extends InputValue
-  ? {}
-  : { _error: 'Field value must match input value type' });
+  step?: number;
+  type?: React.HTMLInputTypeAttribute;
+};
+
+type InputValue = null | React.InputHTMLAttributes<HTMLInputElement>['value'];
 
 export function FormInput<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({
-  name,
   control,
   disabled,
   label,
+  name,
   placeholder,
-  type = 'text',
   required,
+  type = 'text',
 }: FormInputProps<TFieldValues, TName>) {
   return (
     <FieldGroup>
       <Controller
-        name={name}
         control={control}
+        name={name}
         render={({ field, fieldState }) => (
           <Field data-invalid={fieldState.invalid}>
             <div className="flex flex-wrap justify-between gap-x-4 gap-y-2">
@@ -49,12 +52,12 @@ export function FormInput<TFieldValues extends FieldValues, TName extends FieldP
 
             <Input
               {...field}
-              id={name}
-              type={type}
-              disabled={disabled}
-              value={field.value ?? ''}
-              placeholder={placeholder}
               aria-invalid={fieldState.invalid}
+              disabled={disabled}
+              id={name}
+              placeholder={placeholder}
+              type={type}
+              value={field.value ?? ''}
             />
           </Field>
         )}

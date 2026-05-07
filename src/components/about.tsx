@@ -4,7 +4,7 @@ import { Card, CardContent } from '~/components/ui/card';
 
 export function About() {
   return (
-    <section id="about" className="container scroll-m-8 py-20">
+    <section className="container scroll-m-8 py-20" id="about">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-6">
@@ -32,7 +32,7 @@ export function About() {
               'On-Time Delivery',
             ].map((item) => (
               <div className="flex items-center gap-2" key={item}>
-                <BadgeCheck size={20} className="text-red-800" />
+                <BadgeCheck className="size-5 text-red-800" />
                 <span className="text-sm">{item}</span>
               </div>
             ))}
@@ -42,21 +42,21 @@ export function About() {
         <div className="grid gap-4 md:grid-cols-4">
           {[
             {
-              title: 'Family Values',
               description:
                 "Every project is personal to us, treated with the care we'd give our own home.",
               icon: Heart,
+              title: 'Family Values',
             },
             {
-              title: 'Quality First',
               description: 'We use only the finest materials and proven construction techniques.',
               icon: Shield,
+              title: 'Quality First',
             },
             {
-              title: 'Innovation',
               description:
                 'Combining traditional craftsmanship with modern technology and techniques.',
               icon: Zap,
+              title: 'Innovation',
             },
           ].map((card) => (
             <Card
@@ -64,7 +64,7 @@ export function About() {
               key={card.title}
             >
               <CardContent className="flex flex-col items-center gap-4 p-6 text-center">
-                <card.icon size={36} className="text-red-800" />
+                <card.icon className="size-9 text-red-800" />
 
                 <div className="flex flex-col gap-2">
                   <h3 className="font-semibold">{card.title}</h3>

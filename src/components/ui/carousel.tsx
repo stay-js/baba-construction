@@ -1,54 +1,46 @@
 'use client';
 
-import * as React from 'react';
-import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import type { UseEmblaCarouselType } from 'embla-carousel-react';
 
-import { cn } from '~/lib/utils';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import * as React from 'react';
+
 import { Button } from '~/components/ui/button';
+import { cn } from '~/lib/utils';
 
 type CarouselApi = UseEmblaCarouselType[1];
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselContextProps = CarouselProps & {
+  api: ReturnType<typeof useEmblaCarousel>[1];
+  canScrollNext: boolean;
+  canScrollPrev: boolean;
+  carouselRef: ReturnType<typeof useEmblaCarousel>[0];
+  scrollNext: () => void;
+  scrollPrev: () => void;
+};
 type CarouselOptions = UseCarouselParameters[0];
 type CarouselPlugin = UseCarouselParameters[1];
 
 type CarouselProps = {
   opts?: CarouselOptions;
-  plugins?: CarouselPlugin;
   orientation?: 'horizontal' | 'vertical';
+  plugins?: CarouselPlugin;
   setApi?: (api: CarouselApi) => void;
 };
 
-type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0];
-  api: ReturnType<typeof useEmblaCarousel>[1];
-  scrollPrev: () => void;
-  scrollNext: () => void;
-  canScrollPrev: boolean;
-  canScrollNext: boolean;
-} & CarouselProps;
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
-function useCarousel() {
-  const context = React.useContext(CarouselContext);
-
-  if (!context) {
-    throw new Error('useCarousel must be used within a <Carousel />');
-  }
-
-  return context;
-}
-
 function Carousel({
-  orientation = 'horizontal',
-  opts,
-  setApi,
-  plugins,
-  className,
   children,
+  className,
+  opts,
+  orientation = 'horizontal',
+  plugins,
+  setApi,
   ...props
-}: React.ComponentProps<'div'> & CarouselProps) {
+}: CarouselProps & React.ComponentProps<'div'>) {
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -93,7 +85,7 @@ function Carousel({
 
   React.useEffect(() => {
     if (!api) return;
-    onSelect(api);
+    onSelect(api); // eslint-disable-line react-hooks/set-state-in-effect
     api.on('reInit', onSelect);
     api.on('select', onSelect);
 
@@ -105,22 +97,22 @@ function Carousel({
   return (
     <CarouselContext.Provider
       value={{
-        carouselRef,
         api: api,
+        canScrollNext,
+        canScrollPrev,
+        carouselRef,
         opts,
         orientation: orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
-        scrollPrev,
         scrollNext,
-        canScrollPrev,
-        canScrollNext,
+        scrollPrev,
       }}
     >
       <div
-        onKeyDownCapture={handleKeyDown}
-        className={cn('relative', className)}
-        role="region"
         aria-roledescription="carousel"
+        className={cn('relative', className)}
         data-slot="carousel"
+        onKeyDownCapture={handleKeyDown}
+        role="region"
         {...props}
       >
         {children}
@@ -133,11 +125,32 @@ function CarouselContent({ className, ...props }: React.ComponentProps<'div'>) {
   const { carouselRef, orientation } = useCarousel();
 
   return (
-    <div ref={carouselRef} className="overflow-hidden" data-slot="carousel-content">
+    <div className="overflow-hidden" data-slot="carousel-content" ref={carouselRef}>
       <div
         className={cn('flex', orientation === 'horizontal' ? '-ml-4' : '-mt-4 flex-col', className)}
         {...props}
       />
+    </div>
+  );
+}
+
+function CarouselDots() {
+  const { scrollSnaps, scrollTo, selectedIndex } = useCarouselProgress();
+
+  return (
+    <div className="mt-8 flex justify-center gap-2">
+      {scrollSnaps.map((_, index) => (
+        <button
+          className={cn(
+            'h-2 rounded-full transition-all',
+            index === selectedIndex
+              ? 'bg-primary w-8'
+              : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2',
+          )}
+          key={index}
+          onClick={() => scrollTo(index)}
+        />
+      ))}
     </div>
   );
 }
@@ -147,32 +160,59 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
 
   return (
     <div
-      role="group"
       aria-roledescription="slide"
-      data-slot="carousel-item"
       className={cn(
         'min-w-0 shrink-0 grow-0 basis-full',
         orientation === 'horizontal' ? 'pl-4' : 'pt-4',
         className,
       )}
+      data-slot="carousel-item"
+      role="group"
       {...props}
     />
   );
 }
 
-function CarouselPrevious({
+function CarouselNext({
   className,
-  variant = 'outline',
   size = 'icon',
+  variant = 'outline',
   ...props
 }: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+  const { canScrollNext, orientation, scrollNext } = useCarousel();
 
   return (
     <Button
-      data-slot="carousel-previous"
-      variant={variant}
+      className={cn(
+        'absolute size-8 rounded-full',
+        orientation === 'horizontal'
+          ? 'top-1/2 right-4 -translate-y-1/2'
+          : 'bottom-4 left-1/2 -translate-x-1/2 rotate-90',
+        className,
+      )}
+      data-slot="carousel-next"
+      disabled={!canScrollNext}
+      onClick={scrollNext}
       size={size}
+      variant={variant}
+      {...props}
+    >
+      <ArrowRight />
+      <span className="sr-only">Next slide</span>
+    </Button>
+  );
+}
+
+function CarouselPrevious({
+  className,
+  size = 'icon',
+  variant = 'outline',
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  const { canScrollPrev, orientation, scrollPrev } = useCarousel();
+
+  return (
+    <Button
       className={cn(
         'absolute size-8 rounded-full',
         orientation === 'horizontal'
@@ -180,8 +220,11 @@ function CarouselPrevious({
           : 'top-4 left-1/2 -translate-x-1/2 rotate-90',
         className,
       )}
+      data-slot="carousel-previous"
       disabled={!canScrollPrev}
       onClick={scrollPrev}
+      size={size}
+      variant={variant}
       {...props}
     >
       <ArrowLeft />
@@ -190,34 +233,14 @@ function CarouselPrevious({
   );
 }
 
-function CarouselNext({
-  className,
-  variant = 'outline',
-  size = 'icon',
-  ...props
-}: React.ComponentProps<typeof Button>) {
-  const { orientation, scrollNext, canScrollNext } = useCarousel();
+function useCarousel() {
+  const context = React.useContext(CarouselContext);
 
-  return (
-    <Button
-      data-slot="carousel-next"
-      variant={variant}
-      size={size}
-      className={cn(
-        'absolute size-8 rounded-full',
-        orientation === 'horizontal'
-          ? 'top-1/2 right-4 -translate-y-1/2'
-          : 'bottom-4 left-1/2 -translate-x-1/2 rotate-90',
-        className,
-      )}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}
-    >
-      <ArrowRight />
-      <span className="sr-only">Next slide</span>
-    </Button>
-  );
+  if (!context) {
+    throw new Error('useCarousel must be used within a <Carousel />');
+  }
+
+  return context;
 }
 
 function useCarouselProgress() {
@@ -229,7 +252,7 @@ function useCarouselProgress() {
   React.useEffect(() => {
     if (!api) return;
 
-    setScrollSnaps(api.scrollSnapList());
+    setScrollSnaps(api.scrollSnapList()); // eslint-disable-line react-hooks/set-state-in-effect
     setSelectedIndex(api.selectedScrollSnap());
 
     const onSelect = () => setSelectedIndex(api.selectedScrollSnap());
@@ -249,37 +272,16 @@ function useCarouselProgress() {
     [api],
   );
 
-  return { selectedIndex, scrollSnaps, scrollTo };
-}
-
-function CarouselDots() {
-  const { selectedIndex, scrollSnaps, scrollTo } = useCarouselProgress();
-
-  return (
-    <div className="mt-8 flex justify-center gap-2">
-      {scrollSnaps.map((_, index) => (
-        <button
-          key={index}
-          onClick={() => scrollTo(index)}
-          className={cn(
-            'h-2 rounded-full transition-all',
-            index === selectedIndex
-              ? 'bg-primary w-8'
-              : 'bg-muted-foreground/30 hover:bg-muted-foreground/50 w-2',
-          )}
-        />
-      ))}
-    </div>
-  );
+  return { scrollSnaps, scrollTo, selectedIndex };
 }
 
 export {
-  type CarouselApi,
   Carousel,
+  type CarouselApi,
   CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-  useCarouselProgress,
   CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  useCarouselProgress,
 };

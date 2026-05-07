@@ -1,63 +1,67 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import z from 'zod';
-import { toast } from 'sonner';
+import Link from 'next/link';
+import { useCallback, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import z from 'zod';
 
 import sendEmail from '~/app/contact/actions';
-import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
-import { Button } from '~/components/ui/button';
 import { FormInput, FormTextarea } from '~/components/form';
+import { Button } from '~/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { env } from '~/env.js';
 
 const formSchema = z.object({
+  email: z.email({ error: 'Invalid email address!' }),
   firstName: z.string().min(1, { error: 'First name is required!' }),
   lastName: z.string().min(1, { error: 'Last name is required!' }),
-  email: z.email({ error: 'Invalid email address!' }),
-  phone: z.string().optional(),
   message: z.string().min(1, { error: 'Message is required!' }),
+  phone: z.string().optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
 
 const defaultValues = {
+  email: '',
   firstName: '',
   lastName: '',
-  email: '',
-  phone: '',
   message: '',
+  phone: '',
 } satisfies FormSchema;
 
 export function ContactForm() {
   const captchaRef = useRef<ReCAPTCHA>(null);
 
-  const {
-    handleSubmit,
-    control,
-    formState: { isSubmitSuccessful },
-    reset,
-  } = useForm<FormSchema>({ resolver: zodResolver(formSchema), defaultValues });
+  const { control, handleSubmit, reset } = useForm<FormSchema>({
+    defaultValues,
+    resolver: zodResolver(formSchema),
+  });
 
-  const onSubmit: SubmitHandler<FormSchema> = async (data) => {
-    const token = await captchaRef.current?.executeAsync().catch(() => null);
-    captchaRef.current?.reset();
+  const handleFormSubmit = useCallback(
+    (e: React.SubmitEvent<HTMLFormElement>) => {
+      async function onSubmit(data: FormSchema) {
+        const token = await captchaRef.current?.executeAsync().catch(() => null);
+        captchaRef.current?.reset();
 
-    if (!token) return;
+        if (!token) return;
 
-    toast.promise(sendEmail({ ...data, token }), {
-      loading: 'Sending message...',
-      success: () => 'Message sent successfully! We will get back to you as soon as possible.',
-      error: () => 'Something went wrong. Please try again later.',
-    });
-  };
+        toast.promise(sendEmail({ ...data, token }), {
+          error: () => 'Something went wrong. Please try again later.',
+          loading: 'Sending message...',
+          success: () => {
+            reset(defaultValues);
+            return 'Message sent successfully! We will get back to you as soon as possible.';
+          },
+        });
+      }
 
-  useEffect(() => {
-    if (isSubmitSuccessful) reset(defaultValues);
-  }, [isSubmitSuccessful, reset]);
+      void handleSubmit(onSubmit)(e);
+    },
+    [handleSubmit, reset],
+  );
 
   return (
     <Card>
@@ -66,51 +70,48 @@ export function ContactForm() {
       </CardHeader>
 
       <CardContent className="h-full">
-        <form
-          className="flex h-full flex-col justify-between gap-8"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className="flex h-full flex-col justify-between gap-8" onSubmit={handleFormSubmit}>
           <div className="flex flex-col gap-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <FormInput
-                required
-                name="firstName"
                 control={control}
                 label="First Name:"
+                name="firstName"
                 placeholder="John"
+                required
               />
 
               <FormInput
-                required
-                name="lastName"
                 control={control}
                 label="Last Name:"
+                name="lastName"
                 placeholder="Doe"
+                required
               />
             </div>
 
             <FormInput
-              required
-              name="email"
               control={control}
               label="Email:"
+              name="email"
               placeholder="john.doe@example.com"
+              required
             />
 
             <FormInput
-              name="phone"
               control={control}
               label="Phone:"
+              name="phone"
               placeholder="+1 (914) 240-3509"
             />
 
             <FormTextarea
-              required
               className="min-h-40 resize-none"
-              name="message"
               control={control}
               label="Message:"
+              name="message"
               placeholder="Please try to be as detailed as possible..."
+              required
             />
 
             <div className="flex flex-col gap-4 text-sm">
@@ -119,8 +120,8 @@ export function ContactForm() {
                 <Link
                   className="text-[#1a73e8] hover:underline"
                   href="https://policies.google.com/privacy"
-                  target="_blank"
                   rel="noopener noreferrer"
+                  target="_blank"
                 >
                   Privacy Policy
                 </Link>{' '}
@@ -128,8 +129,8 @@ export function ContactForm() {
                 <Link
                   className="text-[#1a73e8] hover:underline"
                   href="https://policies.google.com/terms"
-                  target="_blank"
                   rel="noopener noreferrer"
+                  target="_blank"
                 >
                   Terms of Service
                 </Link>{' '}
@@ -144,7 +145,7 @@ export function ContactForm() {
             </div>
           </div>
 
-          <Button type="submit" className="w-fit px-8">
+          <Button className="w-fit px-8" type="submit">
             Submit
           </Button>
         </form>

@@ -15,7 +15,7 @@ export function Testimonials() {
 
         <div className="gap-4 md:columns-2 lg:columns-3">
           {testimonials.map((item) => (
-            <div key={item.author} className="break-inside-avoid-column pb-4">
+            <div className="break-inside-avoid-column pb-4" key={item.author}>
               <Card className="bg-background flex flex-col gap-8 p-8">
                 <blockquote className="text-foreground/80 leading-relaxed text-pretty">
                   &quot;{item.testimonial}&quot;

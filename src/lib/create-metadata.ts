@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
+
 import { keywords } from '~/constants/keywords';
 
 export function createMetadata({
-  path,
-  title,
   absoluteTitle,
   description,
   noIndex,
+  path,
+  title,
 }: {
-  path: string;
-  title: string;
   absoluteTitle?: string;
   description: string;
   noIndex?: boolean;
+  path: string;
+  title: string;
 }): Metadata {
   return {
     metadataBase: new URL('https://www.babaconstructioncorp.com'),
@@ -22,54 +23,54 @@ export function createMetadata({
 
     keywords: keywords.join(', '),
 
-    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
     description,
+    title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
 
     applicationName: 'BABA Construction',
 
     robots: noIndex
       ? {
-          index: false,
           follow: false,
-          'max-video-preview': -1,
+          index: false,
           'max-image-preview': 'none',
           'max-snippet': -1,
+          'max-video-preview': -1,
         }
       : {
-          index: true,
           follow: true,
           googleBot: {
-            index: true,
             follow: true,
-            'max-video-preview': -1,
+            index: true,
             'max-image-preview': 'large',
             'max-snippet': -1,
+            'max-video-preview': -1,
           },
+          index: true,
         },
 
     openGraph: {
-      type: 'website',
-      url: path,
-      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
       description,
-      siteName: 'BABA Construction Corp.',
-      locale: 'en-US',
       images: [
         {
+          alt: 'BABA Construction Corp.',
+          height: 1000,
+          type: 'image/jpeg',
           url: '/logo.jpg',
           width: 1000,
-          height: 1000,
-          alt: 'BABA Construction Corp.',
-          type: 'image/jpeg',
         },
       ],
+      locale: 'en-US',
+      siteName: 'BABA Construction Corp.',
+      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
+      type: 'website',
+      url: path,
     },
 
     twitter: {
       card: 'summary',
-      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
       description,
       images: ['/logo.jpg'],
+      title: absoluteTitle ?? `${title} - BABA Construction Corp.`,
     },
 
     alternates: {

@@ -4,10 +4,10 @@ import { Button } from '~/components/ui/button';
 import { createMetadata } from '~/lib/create-metadata';
 
 export const metadata = createMetadata({
-  path: '/404',
-  title: '404',
   description: 'The requested content was not found',
   noIndex: true,
+  path: '/404',
+  title: '404',
 });
 
 export default async function NotFound() {
@@ -19,7 +19,7 @@ export default async function NotFound() {
           <p className="text-lg">The requested content was not found</p>
         </div>
 
-        <Button asChild size="lg" className="w-fit">
+        <Button asChild className="w-fit" size="lg">
           <Link href="/">Back to home</Link>
         </Button>
       </div>
