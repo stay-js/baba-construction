@@ -35,7 +35,12 @@ const defaultValues = {
 export function ContactForm() {
   const captchaRef = useRef<ReCAPTCHA>(null);
 
-  const { control, handleSubmit, reset } = useForm<FormSchema>({
+  const {
+    control,
+    formState: { isSubmitting },
+    handleSubmit,
+    reset,
+  } = useForm<FormSchema>({
     defaultValues,
     resolver: zodResolver(formSchema),
   });
@@ -145,7 +150,7 @@ export function ContactForm() {
             </div>
           </div>
 
-          <Button className="w-fit px-8" type="submit">
+          <Button className="w-fit px-8" disabled={isSubmitting} type="submit">
             Submit
           </Button>
         </form>
