@@ -61,7 +61,7 @@ export default async function sendEmail(formData: Data) {
 				<br />
 				Email: <b>${data.email}</b>
         <br />
-				Phone Number: <b>${data.phone}</b>
+				Phone Number: <b>${data.phone || 'Not provided'}</b>
 				</div>
 				<br />
 		

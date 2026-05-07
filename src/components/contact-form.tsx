@@ -15,11 +15,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { env } from '~/env.js';
 
 const formSchema = z.object({
-  email: z.email({ error: 'Invalid email address!' }),
-  firstName: z.string().min(1, { error: 'First name is required!' }),
-  lastName: z.string().min(1, { error: 'Last name is required!' }),
-  message: z.string().min(1, { error: 'Message is required!' }),
-  phone: z.string().optional(),
+  email: z.email({ error: 'Invalid email address!' }).trim(),
+  firstName: z.string().trim().min(1, { error: 'First name is required!' }),
+  lastName: z.string().trim().min(1, { error: 'Last name is required!' }),
+  message: z.string().trim().min(1, { error: 'Message is required!' }),
+  phone: z.string().trim().optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
