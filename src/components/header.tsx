@@ -22,6 +22,13 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  function scrollToSection(href: string) {
+    const id = href.replace('/#', '');
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+    setIsMobileMenuOpen(false);
+  }
+
   const navLinkClass = 'text-foreground/90 hover:text-muted-foreground transition-all duration-300';
 
   function renderNavItem(item: (typeof NAV_ITEMS)[number], key: string) {
@@ -54,22 +61,24 @@ export function Header() {
       )}
     >
       <div className="container grid grid-cols-[1fr_auto] items-center py-4 lg:grid-cols-3">
-        <LinkOrDiv>
-          <Image
-            alt="BABA Construction Corp. Logo"
-            className="rounded-lg"
-            height={48}
-            src="/logo.jpg"
-            width={48}
-          />
+        <div onClick={() => setIsMobileMenuOpen(false)}>
+          <LinkOrDiv>
+            <Image
+              alt="BABA Construction Corp. Logo"
+              className="rounded-lg"
+              height={48}
+              src="/logo.jpg"
+              width={48}
+            />
 
-          <div className="flex flex-col">
-            <span className="text-foreground block font-bold sm:text-xl">BABA Construction</span>
-            <span className="text-muted-foreground block text-sm">
-              Building Beyond Walls<span className="max-sm:hidden">, Since 2010</span>
-            </span>
-          </div>
-        </LinkOrDiv>
+            <div className="flex flex-col">
+              <span className="text-foreground block font-bold sm:text-xl">BABA Construction</span>
+              <span className="text-muted-foreground block text-sm">
+                Building Beyond Walls<span className="max-sm:hidden">, Since 2010</span>
+              </span>
+            </div>
+          </LinkOrDiv>
+        </div>
 
         <nav className="hidden items-center gap-6 justify-self-center lg:flex">
           {NAV_ITEMS.map((item) => renderNavItem(item, item.href))}
@@ -124,7 +133,7 @@ export function Header() {
 
       {isMobileMenuOpen && (
         <div className="container border-t py-4 lg:hidden">
-          <nav className="animate-fade-in-up flex flex-col gap-4">
+          <nav className="animate-fade-in-up flex flex-col items-start gap-4">
             {NAV_ITEMS.map((item) => renderNavItem(item, `${item.href}-mobile`))}
           </nav>
         </div>
@@ -154,9 +163,4 @@ function LinkOrDiv({ children }: { children: React.ReactNode }) {
       {children}
     </Link>
   );
-}
-
-function scrollToSection(href: string) {
-  const id = href.replace('/#', '');
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 }
